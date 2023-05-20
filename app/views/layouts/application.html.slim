@@ -11,6 +11,13 @@ html
       'application',
       'data-turbo-track': 'reload',
        defer: true
-  body
-    = yield
-  footer
+  body.d-flex.flex-column.h-100
+    = render 'layouts/shared/nav'
+
+    main.flex-shrink-0
+      .container
+        = render 'layouts/shared/flash'
+
+        = yield
+  footer.footer.mt-auto.py-3
+    .container
