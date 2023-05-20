@@ -1,0 +1,22 @@
+---
+
+require:
+  - rubocop-performance 
+  - rubocop-rails
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'bin/**'
+    - 'db/schema.rb'
+    - 'db/migrate/**'
+    - 'vendor/**/*'
+    - 'node-modules/**/*'
+    - 'config/initializers/simple_form.rb'
+    - 'config/initializers/simple_form_bootstrap.rb'
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
