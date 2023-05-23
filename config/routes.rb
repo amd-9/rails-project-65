@@ -5,4 +5,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  post 'auth/:provider', to: 'auth#request', as: :auth_request
+  get 'auth/:provider/callback', to: 'auth#callback', as: :callback_auth
 end
