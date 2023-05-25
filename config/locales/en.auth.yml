@@ -1,0 +1,4 @@
+en:
+  auth:
+    create:
+      fail: Error creating user
