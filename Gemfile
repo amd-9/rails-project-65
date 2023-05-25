@@ -64,6 +64,7 @@ group :development, :test do
   gem 'sqlite3', '~> 1.4'
 
   gem 'faker'
+  gem 'dotenv-rails'
 end
 
 group :development do
