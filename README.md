@@ -4,7 +4,7 @@
 [![Actions Status](https://github.com/amd-9/rails-project-65/workflows/hexlet-check/badge.svg)](https://github.com/amd-9/rails-project-65/actions)
 [![Ruby on Rails CI](https://github.com/amd-9/rails-project-65/actions/workflows/rubyonrails-ci.yml/badge.svg)](https://github.com/amd-9/rails-project-65/actions/workflows/rubyonrails-ci.yml)
 
-[hex-market on Railway](https://rails-project-65-production-f160.up.railway.app)
+[hex-market on renderer](https://rails-bulletin-board-app.onrender.com/)
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
