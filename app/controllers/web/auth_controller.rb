@@ -1,20 +1,17 @@
 class Web::AuthController < ApplicationController
-    def auth_request
-        redirect_to callback_auth_path
+    def index
     end
 
-    def callback_auth
+    def callback
         user_info = request.env["omniauth.auth"]
 
-        @user = User.new(name: user_data.name, email: user_data.email)
+        @user = User.new(name: user_info[:info][:name], email: user_info[:info][:email])
 
         if @user.save
             session[:user_id] = @user.id
-            pp "done"
-            redirect_to auth_request_path
+            redirect_to root_path
         else
-            pp "error"
-            redirect_to auth_request_path
+            redirect_to root_path
         end
     end
 end
