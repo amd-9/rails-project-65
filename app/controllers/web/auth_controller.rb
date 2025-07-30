@@ -4,7 +4,7 @@ class Web::AuthController < ApplicationController
     end
 
     def callback_auth
-        user_info = request.env['omniauth.auth']
+        user_info = request.env["omniauth.auth"]
 
         @user = User.new(name: user_data.name, email: user_data.email)
 
@@ -15,5 +15,6 @@ class Web::AuthController < ApplicationController
         else
             pp "error"
             redirect_to auth_request_path
+        end
     end
 end
