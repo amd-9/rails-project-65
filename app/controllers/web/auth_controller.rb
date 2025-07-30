@@ -1,6 +1,6 @@
 class Web::AuthController < ApplicationController
     def auth_request
-        redirect_to auth_request_path
+        redirect_to callback_auth_path
     end
 
     def callback_auth
@@ -11,7 +11,9 @@ class Web::AuthController < ApplicationController
         if @user.save
             session[:user_id] = @user.id
             pp "done"
+            redirect_to auth_request_path
         else
             pp "error"
+            redirect_to auth_request_path
     end
 end
