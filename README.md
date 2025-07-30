@@ -1,3 +1,4 @@
+[https://rails-project-65-1xds.onrender.com](https://rails-project-65-1xds.onrender.com)
 
 # CI status
 [![CI](https://github.com/amd-9/rails-project-65/actions/workflows/ci.yml/badge.svg)](https://github.com/amd-9/rails-project-65/actions/workflows/ci.yml)
