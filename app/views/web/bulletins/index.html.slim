@@ -1,0 +1,18 @@
+h2 Объявления
+
+= link_to 'Новое объявление', new_bulletin_path
+= form_tag('/auth/github', method: 'post', data: { turbo: false}) do
+    button type='submit' Login via GitHub
+
+- if @user
+    h3 = @user.email
+
+.row.mt-2
+    - @bulletins.each do |bulletin|
+        .col-3.pt-2
+            .card.shadow-sm
+                img.card-img-top x-object-fit-cover alt="some image"
+                .card-body
+                    a href=bulletin_path(bulletin)
+                        h5.card-title = bulletin.title
+                    h6.card-subtitle.mb-2.text-muted = bulletin.description

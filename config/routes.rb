@@ -11,8 +11,12 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  root "web/auth#index"
+  root "web/bulletins#index"
 
-  post "auth/:provider", to: "web/auth#request", as: :auth_request
-  get "auth/:provider/callback", to: "web/auth#callback", as: :callback_auth
+  scope module: "web" do
+    resources :bulletins, only: %i[index new show create]
+
+    #post "auth/:provider", to: "auth#request", as: :auth_request
+    get "auth/:provider/callback", to: "auth#callback", as: :callback_auth
+  end
 end

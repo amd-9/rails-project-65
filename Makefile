@@ -1,6 +1,9 @@
 setup:
 	bin/setup
 
+env-prepare:
+	cp -n .env.example .env || true
+
 install:
 	bundle install
 
@@ -12,6 +15,7 @@ start:
 
 lint:
 	rubocop
+	slim-lint app/**/*.slim
 
 lint-fix:
 	rubocop -A

@@ -1,0 +1,6 @@
+= simple_form_for(@bulletin) do |f|
+    = f.error_notification
+    = f.input :title
+    = f.input :description
+    = f.association :category
+    = f.button :submit, class: 'btn btn-primary'
