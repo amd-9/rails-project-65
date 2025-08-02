@@ -70,3 +70,7 @@ group :test do
   gem "selenium-webdriver"
   gem "faker"
 end
+
+group :production do
+  gem "pg"
+end
