@@ -1,18 +1,16 @@
 h2 = t('bulletins.index.title')
-
-= link_to t('bulletins.new.title'), new_bulletin_path
-
 - if @user
     h3 = @user.email
 
-.row.row-cols-1.row-cols-md-3.mb-3.text-center
+= link_to t('bulletins.new.title'), new_bulletin_path, class: ["btn","btn-primary"]
+
+.row.row-cols-1.row-cols-md-3.mb-3
     - @bulletins.each do |bulletin|
         .col
             .card.mb-4.rounded-3.shadow-sm
-                .card-header.py-3 = bulletin.title
-                img.card-img-top.x-object-fit-cover alt="some image"
+                img.card-img-top alt="some image"
                 .card-body
-                    h6.card-subtitle.mb-2.text-muted = bulletin.description
-                    a href=bulletin_path(bulletin)
-                        h5.card-title = bulletin.title
+                    h5.card-title = bulletin.title
+                    p.card-text = bulletin.description
+                    a.btn.btn-primary href=bulletin_path(bulletin) Show details 
                     
