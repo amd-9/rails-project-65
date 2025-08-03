@@ -1,11 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  description: MyText
+  title: Bulletion one
+  description: Tasty potatoes are awesome
   image: 
+  creator: one
+  category: one
 
 two:
-  title: MyString
-  description: MyText
+  title: Bulletin two
+  description: Oranges seems to be orange
   image: 
+  creator: three
+  category: two
