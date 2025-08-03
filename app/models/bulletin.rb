@@ -3,5 +3,5 @@ class Bulletin < ApplicationRecord
     validates :description, length: { maximum: 2000 }
 
     belongs_to :category
-    belongs_to :creator, class_name: 'User', foreign_key: :user_id, inverse_of: :posts
+    belongs_to :creator, class_name: 'User', foreign_key: :user_id, inverse_of: :bulletins
 end

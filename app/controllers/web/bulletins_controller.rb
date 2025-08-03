@@ -16,7 +16,8 @@ class Web::BulletinsController < ApplicationController
     end
 
     def create
-        @bulletin = Bulletin.build(bulletin_params)
+        @current_user = User.find(session[:user_id])
+        @bulletin = @current_user.bulletins.build(bulletin_params)
 
         if @bulletin.save
             redirect_to root_url
