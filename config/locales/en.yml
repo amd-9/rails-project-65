@@ -28,4 +28,7 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  layouts:
+    application:
+      title: Awesome bulletin board
+      log_in_via_github: Login via GitHub

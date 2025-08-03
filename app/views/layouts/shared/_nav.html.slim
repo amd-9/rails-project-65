@@ -1,0 +1,4 @@
+.d-flex.flex-column.flex-md-row.align-items-center.pb-3.mb-4.border-bottom
+    nav.d-inline-flex.mt-2.mt-md-0.ms-md-auto.aling-items-center
+        = form_tag('/auth/github', method: 'post', data: { turbo: false}) do
+            button.btn.btn-primary type='submit' Login via GitHub
