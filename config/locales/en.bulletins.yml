@@ -1,0 +1,10 @@
+en:
+  bulletin:
+    create:
+      title: "Add new bulletin"
+      success: Bulletin successfully created.
+  bulletins:
+      index:
+        title: Current bulletins
+      new:
+        title: Add new bulletin

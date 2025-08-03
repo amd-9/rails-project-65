@@ -29,3 +29,8 @@ en:
     # prompts:
     #   defaults:
     #     age: 'Select your age'
+    labes:
+      bulletin:
+        title: Title
+        description: Description 2
+        category: Category

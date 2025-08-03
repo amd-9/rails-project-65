@@ -1,6 +1,6 @@
-h2 Объявления
+h2 = t('bulletins.index.title')
 
-= link_to 'Новое объявление', new_bulletin_path
+= link_to t('bulletins.new.title'), new_bulletin_path
 = form_tag('/auth/github', method: 'post', data: { turbo: false}) do
     button type='submit' Login via GitHub
 
