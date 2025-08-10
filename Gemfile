@@ -48,6 +48,8 @@ gem "image_processing"
 
 gem "active_storage_validations"
 
+gem "pundit", "~> 2.5"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
