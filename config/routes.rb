@@ -19,4 +19,10 @@ Rails.application.routes.draw do
     # post "auth/:provider", to: "auth#request", as: :auth_request
     get "auth/:provider/callback", to: "auth#callback", as: :callback_auth
   end
+
+  scope module: "admin" do
+    resources :categories, only: %i[index new edit update create destroy]
+
+    get "index", to: "categories#index"
+  end
 end

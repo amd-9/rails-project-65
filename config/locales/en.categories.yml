@@ -1,0 +1,14 @@
+en:
+  category:
+    new:
+      title: "Add new category"
+      success: Category successfully added
+    edit:
+      title: Edit category
+    destroy:
+      title: Delete
+  categories:
+      index:
+        title: Categories
+        name: Name
+        actions: Actions
