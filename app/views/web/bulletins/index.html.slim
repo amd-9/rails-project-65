@@ -1,14 +1,14 @@
 h2 = t('bulletins.index.title')
 - if @user
     h3 = @user.email
-
-= link_to t('bulletins.new.title'), new_bulletin_path, class: ["btn","btn-primary"]
+    = link_to t('bulletins.new.title'), new_bulletin_path, class: ["btn","btn-primary"]
 
 .row.row-cols-1.row-cols-md-3.mb-3
     - @bulletins.each do |bulletin|
         .col
             .card.mb-4.rounded-3.shadow-sm
-                img.card-img-top alt="some image"
+                - if bulletin.image.attached?
+                    = image_tag bulletin.image.variant(resize_to_limit: [500, 500]), class: ["card-img-top"]
                 .card-body
                     h5.card-title = bulletin.title
                     p.card-text = bulletin.description
