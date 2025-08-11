@@ -13,16 +13,17 @@ Rails.application.routes.draw do
   # root "posts#index"
   root "web/bulletins#index"
 
-  scope module: "web" do
+  namespace "web" do
     resources :bulletins, only: %i[index new show create]
 
     # post "auth/:provider", to: "auth#request", as: :auth_request
     get "auth/:provider/callback", to: "auth#callback", as: :callback_auth
   end
 
-  scope module: "admin" do
+  namespace :admin do
     resources :categories, only: %i[index new edit update create destroy]
+    resources :bulletins,  only: %i[index]
 
-    get "index", to: "categories#index"
+    root "bulletins#index"
   end
 end

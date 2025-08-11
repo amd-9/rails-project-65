@@ -1,7 +1,7 @@
 h2 = t('bulletins.index.title')
 - if @user
     h3 = @user.email
-    = link_to t('bulletins.new.title'), new_bulletin_path, class: ["btn","btn-primary"]
+    = link_to t('bulletins.new.title'), new_web_bulletin_path, class: ["btn","btn-primary"]
 
 .row.row-cols-1.row-cols-md-3.mb-3
     - @bulletins.each do |bulletin|
@@ -12,5 +12,5 @@ h2 = t('bulletins.index.title')
                 .card-body
                     h5.card-title = bulletin.title
                     p.card-text = bulletin.description
-                    a.btn.btn-primary href=bulletin_path(bulletin) Show details 
+                    a.btn.btn-primary href=web_bulletin_path(bulletin) Show details 
                     

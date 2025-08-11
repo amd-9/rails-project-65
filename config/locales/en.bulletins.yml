@@ -1,10 +1,16 @@
 en:
   bulletin:
     create:
-      title: "Add new bulletin"
-      success: Bulletin successfully created.
+      title: Add new bulletin
+      success: Bulletin successfully created
+    archive:
+      success: Bulletin successfully archived
   bulletins:
       index:
         title: Current bulletins
+        item_title: Title
+        state: State
+        created_at: Created
+        actions: Actions
       new:
         title: Add new bulletin

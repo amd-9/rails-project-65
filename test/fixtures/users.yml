@@ -3,11 +3,19 @@
 one:
   name: developer
   email: developer@test.io
+  admin: false
 
 two:
   name: developer2
   email: developer2@test.io
+  admin: false
 
 three:
   name: developer3
   email: developer2@test.io
+  admin: false
+
+admin:
+  name: admin
+  email: admin@test.io
+  admin: true
