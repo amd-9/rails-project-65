@@ -23,5 +23,17 @@ en:
         edit: Edit
         send_to_moderation: Send to Moderation
         send_to_archive:  Send Archive
+        publish: Publish
+        reject: Reject
       new:
         title: Add new bulletin
+      archive:
+        confirm: Are you shure to archive this bulletin?
+        success: Bulletin archived successfully
+        failure: Bulletin cannot be archived
+      to_moderate:
+        confirm: Send to moderation?
+      publish:
+        confirm: Are you shure to publish this bulletin?
+      reject:
+        confirm: Are you shure to reject this bulletin?

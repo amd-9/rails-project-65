@@ -16,8 +16,9 @@ Rails.application.routes.draw do
   get "auth/:provider/callback", to: "web/auth#callback", as: :callback_auth
 
   namespace :web do
-    resources :bulletins, only: %i[index new show create edit update]
+    resources :bulletins, only: %i[index new show create edit update archive]
     get "profile/index"
+    post "/bulletins/:id/:to_state", to: "bulletins#change_state", as: :change_state_bulletin
     # post "auth/:provider", to: "auth#request", as: :auth_request
   end
 

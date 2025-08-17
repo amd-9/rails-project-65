@@ -36,6 +36,15 @@ class Web::BulletinsController < ApplicationController
         end
     end
 
+    def change_state
+        bulletin = Bulletin.find(params[:id])
+        to_state = params[:to_state]
+
+        bulletin.aasm.fire!(to_state)
+
+        redirect_back fallback_location: root_path, notice: t("bulletin.archive.success")
+    end
+
     private
 
     def bulletin_params

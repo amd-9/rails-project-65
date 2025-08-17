@@ -13,10 +13,10 @@ table.table
         - @bulletins.each do |bulletin|
             tr
                 td = bulletin.title
-                td Some state
+                td = bulletin.state
                 td = bulletin.created_at
                 td
                      = link_to t('bulletins.index.show'), web_bulletin_path(bulletin)
                      = link_to t('bulletins.index.edit'), edit_web_bulletin_path(bulletin)
-                     = link_to t('bulletins.index.send_to_moderation'), web_bulletin_path(bulletin)
-                     = link_to t('bulletins.index.send_to_archive'), web_bulletin_path(bulletin)
+                     = link_to t('bulletins.index.send_to_moderation'),  web_change_state_bulletin_path(bulletin, :to_moderate),  data: { turbo_method: :post , turbo_confirm: t('bulletins.to_moderate.confirm')}
+                     = link_to t('bulletins.index.send_to_archive'), web_change_state_bulletin_path(bulletin, :archive),  data: { turbo_method: :post , turbo_confirm: t('bulletins.archive.confirm')}

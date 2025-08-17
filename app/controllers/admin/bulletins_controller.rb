@@ -2,7 +2,7 @@ class Admin::BulletinsController < Admin::ApplicationController
     layout "layouts/admin"
 
     def on_moderation
-        @bulletins = Bulletin.order(created_at: :desc)
+        @bulletins = Bulletin.where(state: :under_moderation).order(created_at: :desc)
         render :on_moderation
     end
 
