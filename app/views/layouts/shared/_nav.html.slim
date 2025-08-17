@@ -4,6 +4,6 @@ nav.navbar.navbar-expand-lg.bg-body-tertiary
     ul.navbar-nav.me-auto.mb-2.mb-lg-0
         li.navbar-item
             - if policy(:admin).admin?
-                a.nav-link href="#" Admin panel
+                = link_to "Admin panel", admin_root_path
     = form_tag('/auth/github', method: 'post', data: { turbo: false}) do
             button.btn.btn-primary type='submit' Login via GitHub
