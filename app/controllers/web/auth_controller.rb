@@ -4,7 +4,7 @@ class Web::AuthController < ApplicationController
         user_nickname = user_info[:info][:nickname]
         user_email =  user_info[:info][:email]
 
-        user = User.find_by(name: user_nickname, email: user_email) 
+        user = User.find_by(name: user_nickname, email: user_email)
 
         if user
             session[:user_id] = user.id

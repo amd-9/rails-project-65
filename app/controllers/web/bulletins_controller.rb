@@ -16,7 +16,7 @@ class Web::BulletinsController < ApplicationController
         @bulletin = @current_user.bulletins.build(bulletin_params)
 
         if @bulletin.save
-            redirect_back fallback_location: root_path, notice: t('bulletin.create.success')
+            redirect_back fallback_location: root_path, notice: t("bulletin.create.success")
         else
             render :new, status: :unprocessable_entity
         end
@@ -24,13 +24,13 @@ class Web::BulletinsController < ApplicationController
 
     def edit
         @bulletin = Bulletin.find(params[:id])
-    end 
+    end
 
     def update
         bulletin = Bulletin.find(params[:id])
-        
+
         if bulletin.update(bulletin_params)
-            redirect_to web_bulletin_path(bulletin), notice: t('bulletin.update.success')
+            redirect_to web_bulletin_path(bulletin), notice: t("bulletin.update.success")
         else
              render :edit, status: :unprocessable_entity
         end
