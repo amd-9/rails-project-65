@@ -3,6 +3,12 @@ h2 = t('bulletins.index.title')
     h3 = @user.email
     = link_to t('bulletins.new.title'), new_web_bulletin_path, class: ["btn","btn-primary"]
 
+= search_form_for @q, url: root_path do |f|
+    = f.input :title_cont
+    = f.input :category_id_eq, as: :select, collection: Category.all.map  { |c| [c.name, c.id] }, label: false
+    = f.submit 'Search', class: 'btn btn-primary'
+    = link_to 'Reset', url_for, class: 'btn btn-outline-primary'
+
 .row.row-cols-1.row-cols-md-3.mb-3
     - @bulletins.each do |bulletin|
         .col

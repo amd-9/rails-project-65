@@ -50,7 +50,9 @@ gem "active_storage_validations"
 
 gem "pundit", "~> 2.5"
 
-gem 'aasm'
+gem "aasm"
+
+gem "ransack"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

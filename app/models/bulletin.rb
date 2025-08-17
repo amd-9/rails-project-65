@@ -22,7 +22,7 @@ class Bulletin < ApplicationRecord
         end
 
         event :archive do
-            transitions from: [:draft, :under_moderation, :published, :rejected], to: :archived
+            transitions from: [ :draft, :under_moderation, :published, :rejected ], to: :archived
         end
 
         event :publish do
@@ -33,4 +33,8 @@ class Bulletin < ApplicationRecord
             transitions from: :under_moderation, to: :rejected
         end
     end
+
+  def self.ransackable_attributes(_auth_object = nil)
+    [ "title", "category_id" ]
+  end
 end
