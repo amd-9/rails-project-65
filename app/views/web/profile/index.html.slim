@@ -15,4 +15,8 @@ table.table
                 td = bulletin.title
                 td Some state
                 td = bulletin.created_at
-                td Action
+                td
+                     = link_to t('bulletins.index.show'), web_bulletin_path(bulletin)
+                     = link_to t('bulletins.index.edit'), edit_web_bulletin_path(bulletin)
+                     = link_to t('bulletins.index.send_to_moderation'), web_bulletin_path(bulletin)
+                     = link_to t('bulletins.index.send_to_archive'), web_bulletin_path(bulletin)

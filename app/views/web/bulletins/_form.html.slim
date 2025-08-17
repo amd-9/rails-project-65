@@ -3,5 +3,7 @@
     = f.input :title
     = f.input :description
     = f.association :category
+    .h5 = @bulletin.image.filename
+    = image_tag @bulletin.image.variant(resize_to_limit: [250, 250]), class: ["image-fluid","rounded-start"]
     = f.input :image, as: :file
     = f.button :submit, class: 'btn btn-primary'

@@ -3,10 +3,14 @@ en:
     create:
       title: Add new bulletin
       success: Bulletin successfully created
+    edit:
+      title: Update bulletin
+    update:
+      success: Bulleint successfully updated
     archive:
       success: Bulletin successfully archived
     show:
-      creatored:  "Created by %{creator} at %{created_at}"
+      created:  "Created by %{creator} at %{created_at}"
   bulletins:
       index:
         title: Current bulletins
@@ -15,5 +19,9 @@ en:
         state: State
         created_at: Created
         actions: Actions
+        show: Show
+        edit: Edit
+        send_to_moderation: Send to Moderation
+        send_to_archive:  Send Archive
       new:
         title: Add new bulletin
