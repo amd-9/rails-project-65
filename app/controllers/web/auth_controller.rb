@@ -1,18 +1,26 @@
 class Web::AuthController < ApplicationController
     def callback
-        pp "Processing callback"
-
         user_info = request.env["omniauth.auth"]
+        user_nickname = user_info[:info][:nickname]
+        user_email =  user_info[:info][:email]
 
-        @user = User.new(name: user_info[:info][:login], email: user_info[:info][:email])
+        user = User.find_by(name: user_nickname, email: user_email) 
 
-        pp user_info
-        pp "authorized user - login: #{@user.name}, email: #{@user.email}"
+        if user
+            session[:user_id] = user.id
+            flash[:info] = "Wellcome back!"
+            redirect_to root_path
+            return
+        end
 
-        if @user.save
-            session[:user_id] = @user.id
+        user = User.new(name: user_nickname, email: user_email)
+
+        if user.save
+            flash[:info] = "Logged in successfully!"
+            session[:user_id] = user.id
             redirect_to root_path
         else
+            flash[:alert] = "Authorization error"
             redirect_to root_path
         end
     end

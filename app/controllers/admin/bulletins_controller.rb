@@ -1,4 +1,4 @@
-class Admin::BulletinsController < ApplicationController
+class Admin::BulletinsController < Admin::ApplicationController
     layout "layouts/admin"
 
     def on_moderation

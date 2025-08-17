@@ -13,11 +13,12 @@ Rails.application.routes.draw do
   # root "posts#index"
   root "web/bulletins#index"
 
+  get "auth/:provider/callback", to: "web/auth#callback", as: :callback_auth
+
   namespace "web" do
     resources :bulletins, only: %i[index new show create]
 
     # post "auth/:provider", to: "auth#request", as: :auth_request
-    get "auth/:provider/callback", to: "auth#callback", as: :callback_auth
   end
 
   namespace :admin do
