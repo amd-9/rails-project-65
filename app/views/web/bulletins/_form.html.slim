@@ -1,4 +1,4 @@
-= simple_form_for(@bulletin) do |f|
+= simple_form_for [:web, @bulletin] do |f|
     = f.error_notification
     = f.input :title
     = f.input :description
