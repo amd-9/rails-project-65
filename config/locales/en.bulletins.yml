@@ -5,6 +5,8 @@ en:
       success: Bulletin successfully created
     archive:
       success: Bulletin successfully archived
+    show:
+      creatored:  "Created by %{creator} at %{created_at}"
   bulletins:
       index:
         title: Current bulletins

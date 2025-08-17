@@ -8,7 +8,7 @@ class Web::BulletinsController < ApplicationController
     end
 
     def show
-        @bulletin = Bulletin.new
+        @bulletin = Bulletin.find_by(params[:id])
     end
 
     def create
