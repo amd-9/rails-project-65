@@ -1,8 +1,10 @@
 nav.navbar.navbar-expand-lg.bg-body-tertiary
     .container-fluid
-        a.navbar-brand href="#" Awesome Bulletin
+        a.navbar-brand href=root_path Awesome Bulletin
     ul.navbar-nav.me-auto.mb-2.mb-lg-0
         li.navbar-item
+            - if @user
+                = link_to "My bulletins", web_profile_index_path
             - if policy(:admin).admin?
                 = link_to "Admin panel", admin_root_path
     = form_tag('/auth/github', method: 'post', data: { turbo: false}) do
