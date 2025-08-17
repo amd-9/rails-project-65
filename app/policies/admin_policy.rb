@@ -6,6 +6,6 @@ class AdminPolicy
     end
 
     def admin?
-        user.admin?
+        user.admin? unless user.nil?
     end
 end
