@@ -18,4 +18,4 @@ html
     body
         .page-content.container
             = render 'layouts/shared/nav'
-            = yield
+            = content_for?(:content) ? yield(:content) : yield

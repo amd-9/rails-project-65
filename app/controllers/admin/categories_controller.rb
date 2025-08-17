@@ -1,4 +1,6 @@
 class Admin::CategoriesController < ApplicationController
+    layout "layouts/admin"
+
     def index
         @categories = Category.order(created_at: :desc)
     end

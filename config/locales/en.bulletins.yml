@@ -8,6 +8,7 @@ en:
   bulletins:
       index:
         title: Current bulletins
+        on_moderation_title: Bulletins on moderation
         item_title: Title
         state: State
         created_at: Created

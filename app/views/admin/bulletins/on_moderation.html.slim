@@ -1,0 +1,14 @@
+h2 = t('bulletins.index.on_moderation_title')
+
+table.table
+    thead
+        tr 
+            th.col = t('bulletins.index.item_title')
+            th.col = t('bulletins.index.created_at')
+            th.col = t('bulletins.index.actions')
+    tbody
+        - @bulletins.each do |bulletin|
+            tr
+                td = bulletin.title
+                td = bulletin.created_at
+                td Action

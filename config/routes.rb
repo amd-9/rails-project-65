@@ -24,6 +24,6 @@ Rails.application.routes.draw do
     resources :categories, only: %i[index new edit update create destroy]
     resources :bulletins,  only: %i[index]
 
-    root "bulletins#index"
+    root "bulletins#on_moderation"
   end
 end

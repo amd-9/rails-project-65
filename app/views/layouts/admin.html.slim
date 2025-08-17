@@ -1,0 +1,12 @@
+= content_for :content do
+    .container
+        .row
+            .col-3
+                ul.nav.nav-pills.flex-column
+                    li.nav-item = link_to t('bulletins.title.on_moderation'), admin_root_path, class: class_names("nav-link", { "active": current_page?(admin_root_path) })
+                    li.nav-item = link_to t('bulletins.index.title'), admin_bulletins_path, class: class_names("nav-link", { "active": current_page?(admin_bulletins_path) })
+                    li.nav-item = link_to t('categories.index.title'), admin_categories_path, class: class_names("nav-link", { "active": current_page?(admin_categories_path) })
+            .col-9
+                = yield
+        
+= render template: "layouts/application"
