@@ -1,5 +1,6 @@
 class Web::ProfileController < ApplicationController
   def index
-    @bulletins = @user.bulletins
+    @q = Bulletin.ransack(params[:q])
+    @bulletins = @q.result
   end
 end

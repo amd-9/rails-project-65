@@ -7,7 +7,8 @@ class Admin::BulletinsController < Admin::ApplicationController
     end
 
     def index
-        @bulletins = Bulletin.order(created_at: :desc)
+        @q = Bulletin.ransack(params[:q])
+        @bulletins = @q.result.order(created_at: :desc)
     end
 
     def archive

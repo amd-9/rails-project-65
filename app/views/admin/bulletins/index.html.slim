@@ -1,6 +1,10 @@
 h2 = t('bulletins.index.title')
 
-h3 Search panel
+= search_form_for @q, url: admin_bulletins_path do |f|
+    = f.input :title_cont
+    = f.input :state_eq, as: :select, collection: Bulletin.aasm.states.map(&:name), label: false
+    = f.submit 'Search', class: 'btn btn-primary'
+    = link_to 'Reset', url_for, class: 'btn btn-outline-primary'
 
 table.table
     thead
