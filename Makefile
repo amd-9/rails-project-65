@@ -13,6 +13,9 @@ console:
 start:
 	bin/rails s -p "3000" -b "0.0.0.0"
 
+test:
+	bin/rails test
+
 lint:
 	rubocop
 	slim-lint app/**/*.slim
