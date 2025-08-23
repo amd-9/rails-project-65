@@ -1,6 +1,6 @@
 h2 =t('categories.index.title')
 
-= link_to t('category.new.title'), new_admin_category_path
+= link_to t('category.new.title'), new_admin_category_path, class: ["btn", "btn-primary"]
 
 table.table
     thead
@@ -14,5 +14,6 @@ table.table
                 th scope="row" = category.id
                 td = category.name
                 td
-                    = link_to t('category.edit.title'), edit_admin_category_path(category)
-                    = link_to t('category.destroy.title'), admin_category_path(category), data: { turbo_method: "delete"}
+                    .btn-group
+                    = link_to t('category.edit.title'), edit_admin_category_path(category), class: ["me-1","btn","btn-primary"]
+                    = link_to t('category.destroy.title'), admin_category_path(category), data: { turbo_method: "delete"}, class: ["btn","btn-danger"]

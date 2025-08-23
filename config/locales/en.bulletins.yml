@@ -16,6 +16,7 @@ en:
       success: Bulletin successfully archived
     show:
       created:  "Created by %{creator} at %{created_at}"
+    state_change_not_permited: Insufficient access rights!
   bulletins:
       index:
         title: Current bulletins
@@ -26,10 +27,11 @@ en:
         actions: Actions
         show: Show
         edit: Edit
-        send_to_moderation: Send to Moderation
-        send_to_archive:  Send Archive
+        send_to_moderation: To moderation
+        send_to_archive: Archive
         publish: Publish
         reject: Reject
+        no_items: No bulletins found
       new:
         title: Add new bulletin
       archive:

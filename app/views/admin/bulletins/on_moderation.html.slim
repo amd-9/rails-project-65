@@ -12,9 +12,16 @@ table.table
                 td = link_to bulletin.title, web_bulletin_path(bulletin)
                 td = bulletin.created_at
                 td
-                    = link_to t('bulletins.index.publish'), web_change_state_bulletin_path(bulletin, :publish),  data: { turbo_method: :post , turbo_confirm: t('bulletins.publich.confirm')}
-                    = link_to t('bulletins.index.reject'),  web_change_state_bulletin_path(bulletin, :reject),  data: { turbo_method: :post , turbo_confirm: t('bulletins.reject.confirm')}
-                    = link_to t('bulletins.index.send_to_archive'), web_change_state_bulletin_path(bulletin, :archive),  data: { turbo_method: :post , turbo_confirm: t('bulletins.archive.confirm')}
+                    .btn-group
+                        - if bulletin.may_publish?
+                            = link_to t('bulletins.index.publish'), web_change_state_bulletin_path(bulletin, :publish),  data: { turbo_method: :post , turbo_confirm: t('bulletins.publich.confirm')}, class: ["me-1","btn","btn-primary"]
+                        - if bulletin.may_reject?
+                            = link_to t('bulletins.index.reject'),  web_change_state_bulletin_path(bulletin, :reject),  data: { turbo_method: :post , turbo_confirm: t('bulletins.reject.confirm')}, class: ["me-1","btn","btn-primary"]
+                        - if bulletin.may_archive?
+                            = link_to t('bulletins.index.send_to_archive'), web_change_state_bulletin_path(bulletin, :archive),  data: { turbo_method: :post , turbo_confirm: t('bulletins.archive.confirm')}, class: ["btn","btn-danger"]
 
-= paginate @bulletins
-= page_entries_info @bulletins
+.d-flex.flex-row.justify-content-between.align-items-center
+    .col
+        = paginate @bulletins
+    .col-3
+        = page_entries_info @bulletins

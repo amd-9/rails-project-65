@@ -18,6 +18,9 @@ h2 = t('bulletins.index.title')
                     = link_to 'Reset', url_for, class: 'btn btn-outline-primary'
 
 .row.row-cols-1.row-cols-md-5.mb-5.
+    - if @bulletins.empty?
+        .col
+            h3 = t('bulletins.index.no_items')
     - @bulletins.each do |bulletin|
         .col
             .card.mb-4.rounded-3.shadow-sm.h-100
