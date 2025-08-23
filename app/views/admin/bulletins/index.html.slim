@@ -22,3 +22,6 @@ table.table
                 td
                     = link_to t('bulletins.index.show'), web_bulletin_path(bulletin)
                     = link_to t('bulletins.index.send_to_archive'), web_change_state_bulletin_path(bulletin, :archive),  data: { turbo_method: :post , turbo_confirm: t('bulletins.archive.confirm')}
+
+= paginate @bulletins
+= page_entries_info @bulletins

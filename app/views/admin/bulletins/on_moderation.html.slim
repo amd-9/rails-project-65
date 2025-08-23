@@ -15,3 +15,6 @@ table.table
                     = link_to t('bulletins.index.publish'), web_change_state_bulletin_path(bulletin, :publish),  data: { turbo_method: :post , turbo_confirm: t('bulletins.publich.confirm')}
                     = link_to t('bulletins.index.reject'),  web_change_state_bulletin_path(bulletin, :reject),  data: { turbo_method: :post , turbo_confirm: t('bulletins.reject.confirm')}
                     = link_to t('bulletins.index.send_to_archive'), web_change_state_bulletin_path(bulletin, :archive),  data: { turbo_method: :post , turbo_confirm: t('bulletins.archive.confirm')}
+
+= paginate @bulletins
+= page_entries_info @bulletins

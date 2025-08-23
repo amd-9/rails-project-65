@@ -1,4 +1,9 @@
 en:
+  ransack:
+    attributes:
+      bulletin:
+        title: Bulletin title
+        category_id: Bulletin category
   bulletin:
     create:
       title: Add new bulletin
