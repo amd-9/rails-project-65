@@ -20,5 +20,10 @@ html
             = render 'layouts/shared/nav'
             = render 'layouts/shared/flash'
             = content_for?(:content) ? yield(:content) : yield
-        footer
-            <a href="https://www.flaticon.com/free-icons/noticeboard" title="noticeboard icons">Noticeboard icons created by Mihimihi - Flaticon</a>
+        footer.bg-light.text-center.fixed-bottom
+            .container
+                .d-flex.flex-row.justify-content-center
+                    .col-1
+                        span 2025
+                    .col-2
+                        a class="nav-link" href="https://www.flaticon.com/free-icons/noticeboard" title="Noticeboard icons created by Mihimihi - Flaticon" Icons from Flaticon

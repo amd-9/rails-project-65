@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   root "web/bulletins#index"
 
   get "auth/:provider/callback", to: "web/auth#callback", as: :callback_auth
+  get "auth/logout", to: "web/auth#logout", as: :auth_logout
 
   namespace :web do
     resources :bulletins, only: %i[index new show create edit update archive]
