@@ -32,6 +32,8 @@ en:
         publish: Publish
         reject: Reject
         no_items: No bulletins found
+        search: Search
+        reset: Reset
       new:
         title: Add new bulletin
       archive:

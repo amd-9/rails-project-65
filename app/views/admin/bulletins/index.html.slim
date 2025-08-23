@@ -11,9 +11,9 @@ h2 = t('bulletins.index.title')
                 = f.input :state_eq, as: :select, collection: Bulletin.aasm.states.map(&:name), label: false, class: "form-control"
             .col-2.d-flex.flex-row
                 .col
-                    = f.submit 'Search', class: 'btn btn-primary'
+                    = f.submit t('bulletins.index.search'), class: 'btn btn-primary'
                 .col
-                    = link_to 'Reset', url_for, class: 'btn btn-outline-primary'
+                    = link_to t('bulletins.index.reset'), url_for, class: 'btn btn-outline-primary'
 
 table.table
     thead
