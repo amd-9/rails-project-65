@@ -32,10 +32,14 @@ class Web::BulletinsController < ApplicationController
     def update
         bulletin = Bulletin.find(params[:id])
 
+        if bulletin.creator != current_user
+            return redirect_to root_path, notice: t("bulletin.state_change_not_permited")
+        end
+
         if bulletin.update(bulletin_params)
             redirect_to bulletin_path(bulletin), notice: t("bulletin.update.success")
         else
-             render :edit, status: :unprocessable_entity
+            render :edit, status: :unprocessable_entity
         end
     end
 
