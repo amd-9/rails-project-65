@@ -1,3 +1,8 @@
 .x-object-fit-cover {
     object-fit: cover;
 }
+
+.x-bulletin-description {
+    height: 100px;
+    overflow-y: auto;
+}
