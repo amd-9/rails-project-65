@@ -7,7 +7,7 @@ class Admin::ApplicationController < ApplicationController
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def authorize_user
-      authorize :admin, :admin?
+      authorize :user, :admin?
   end
 
   def user_not_authorized
