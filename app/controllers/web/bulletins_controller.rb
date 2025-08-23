@@ -40,7 +40,7 @@ class Web::BulletinsController < ApplicationController
     def change_state
         bulletin = Bulletin.find(params[:id])
         to_state = params[:to_state]
-        restricted_states = [:reject, :publish]
+        restricted_states = [ :reject, :publish ]
 
         if bulletin.creator != current_user and !current_user.admin?
             redirect_back fallback_location: root_path, notice: t("bulletin.state_change_not_permited")
