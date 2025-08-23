@@ -23,7 +23,7 @@ class ActionDispatch::IntegrationTest
       uid: "12345",
       info: {
         email: user.email,
-        name: user.name
+        nickname: user.name
       }
     }
 

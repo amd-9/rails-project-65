@@ -3,6 +3,8 @@ require "test_helper"
 class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:one)
+    @second_user = users(:two)
+
     @bulletin = bulletins(:one)
 
     @bulletin.image.attach(file_fixture("cookie_fixture.jpg"))
@@ -46,7 +48,7 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
 
     assert created_bulletin
     assert created_bulletin.image.filename, upload_file_name
-    assert_redirected_to root_path
+    assert_redirected_to bulletin_path(created_bulletin)
   end
 
   test "should not create test if user is not logged in" do
@@ -70,5 +72,45 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
 
     get bulletin_path(@bulletin)
     assert_response :success
+  end
+
+  test "should update bulletin" do
+    sign_in(@user)
+
+    upload_file_name = "cookie_fixture.jpg"
+
+    attrs = {
+      title: Faker::Science.element,
+      description: Faker::Lorem.sentence(word_count: 10),
+      image: fixture_file_upload(upload_file_name, "image/jpg"),
+      category_id: @category.id
+    }
+
+    put bulletin_path(@bulletin), params: { bulletin: attrs }
+
+    updated_bulletin = Bulletin.find_by(attrs.except(:image))
+
+    assert @bulletin.id, updated_bulletin.id
+    assert_redirected_to bulletin_path(@bulletin)
+  end
+
+  test "should not update bulletin for a different user" do
+    sign_in(@second_user)
+
+    upload_file_name = "cookie_fixture.jpg"
+
+    attrs = {
+      title: Faker::Science.element,
+      description: Faker::Lorem.sentence(word_count: 10),
+      image: fixture_file_upload(upload_file_name, "image/jpg"),
+      category_id: @category.id
+    }
+
+    put bulletin_path(@bulletin), params: { bulletin: attrs }
+
+    updated_bulletin = Bulletin.find_by(attrs.except(:image))
+
+    assert_nil updated_bulletin
+    assert_redirected_to root_path
   end
 end
