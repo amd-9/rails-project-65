@@ -19,7 +19,7 @@ class Web::BulletinsController < ApplicationController
         @bulletin = @current_user.bulletins.build(bulletin_params)
 
         if @bulletin.save
-            redirect_back fallback_location: root_path, notice: t("bulletin.create.success")
+            redirect_to bulletin_url(@bulletin), notice: t("bulletin.create.success")
         else
             render :new, status: :unprocessable_entity
         end
