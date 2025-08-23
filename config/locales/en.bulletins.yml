@@ -41,8 +41,11 @@ en:
         success: Bulletin archived successfully
         failure: Bulletin cannot be archived
       to_moderate:
+        success: Bulletin sent to moderation successfully
         confirm: Send to moderation?
       publish:
+        success: Bulletin published successfully
         confirm: Are you shure to publish this bulletin?
       reject:
+        success:  Bulletin rejected successfully
         confirm: Are you shure to reject this bulletin?
