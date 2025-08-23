@@ -14,7 +14,7 @@ table.table
                 td
                     .btn-group
                         - if bulletin.may_publish?
-                            = link_to t('bulletins.index.publish'), change_state_bulletin_path(bulletin, :publish),  data: { turbo_method: :post , turbo_confirm: t('bulletins.publich.confirm')}, class: ["me-1","btn","btn-primary"]
+                            = link_to t('bulletins.index.publish'), change_state_bulletin_path(bulletin, :publish),  data: { turbo_method: :post , turbo_confirm: t('bulletins.publish.confirm')}, class: ["me-1","btn","btn-primary"]
                         - if bulletin.may_reject?
                             = link_to t('bulletins.index.reject'),  change_state_bulletin_path(bulletin, :reject),  data: { turbo_method: :post , turbo_confirm: t('bulletins.reject.confirm')}, class: ["me-1","btn","btn-primary"]
                         - if bulletin.may_archive?
