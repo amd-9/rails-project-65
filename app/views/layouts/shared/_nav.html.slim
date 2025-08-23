@@ -1,11 +1,16 @@
 nav.navbar.navbar-expand-lg.bg-body-tertiary
     .container-fluid
-        a.navbar-brand href=root_path Awesome Bulletin
-    ul.navbar-nav.me-auto.mb-2.mb-lg-0
-        li.navbar-item
+        a.navbar-brand href=root_path
+            = image_tag "bulletin-board.png", width: 50, height: 50
+            span.ms-2 Awesome Bulletins
+        ul.navbar-nav.d-flex.align-items-center
             - if @user
-                = link_to "My bulletins", web_profile_index_path
+                li.navbar-item
+                    = link_to "My bulletins", web_profile_index_path, class: "nav-link"
             - if policy(:admin).admin?
-                = link_to "Admin panel", admin_root_path
-    = form_tag('/auth/github', method: 'post', data: { turbo: false}) do
-            button.btn.btn-primary type='submit' Login via GitHub
+                li.navbar-item
+                    = link_to "Admin panel", admin_root_path, class: "nav-link"
+            = form_tag('/auth/github', method: 'post', data: { turbo: false}) do
+                    button.btn.btn-primary type='submit'
+                        i.bi.bi-github.me-2
+                        span Login
