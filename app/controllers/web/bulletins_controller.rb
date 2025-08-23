@@ -33,7 +33,7 @@ class Web::BulletinsController < ApplicationController
         bulletin = Bulletin.find(params[:id])
 
         if bulletin.update(bulletin_params)
-            redirect_to web_bulletin_path(bulletin), notice: t("bulletin.update.success")
+            redirect_to bulletin_path(bulletin), notice: t("bulletin.update.success")
         else
              render :edit, status: :unprocessable_entity
         end

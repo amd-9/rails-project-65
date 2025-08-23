@@ -1,6 +1,6 @@
 h2 = t('bulletins.index.title')
 - if @user
-    = link_to t('bulletins.new.title'), new_web_bulletin_path, class: ["btn","btn-primary"]
+    = link_to t('bulletins.new.title'), new_bulletin_path, class: ["btn","btn-primary"]
 
 .card.mb-3.mt-3.rounded-3.shadow-sm.bg-light
     = search_form_for @q, url: root_path do |f|
@@ -29,7 +29,7 @@ h2 = t('bulletins.index.title')
                 .card-body
                     h5.card-title = bulletin.title
                     p.card-text = bulletin.description
-                    a.btn.btn-primary href=web_bulletin_path(bulletin) Show details 
+                    a.btn.btn-primary href=bulletin_path(bulletin) Show details 
                 .card-footer
                     small.text-body-secondary = t('bulletin.show.created', creator: bulletin.creator.name, created_at: bulletin.created_at)
                     

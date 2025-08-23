@@ -12,7 +12,7 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get web_bulletins_url
+    get bulletins_url
     assert_response :success
   end
 
@@ -20,7 +20,7 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     sign_in(@user)
     assert signed_in?
 
-    get new_web_bulletin_path
+    get new_bulletin_path
     assert_response :success
   end
 
@@ -38,7 +38,7 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     assert signed_in?
 
     assert_difference("Bulletin.count") do
-        post web_bulletins_url, params: { bulletin: attrs }
+        post bulletins_url, params: { bulletin: attrs }
     end
 
     created_bulletin = Bulletin.find_by(attrs.except(:image))
@@ -59,7 +59,7 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
       category_id: @category.id
     }
 
-    post web_bulletins_url, params: { bulletin: attrs }
+    post bulletins_url, params: { bulletin: attrs }
 
     assert_response :found
   end
@@ -68,7 +68,7 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     sign_in(@user)
     assert signed_in?
 
-    get web_bulletin_path(@bulletin)
+    get bulletin_path(@bulletin)
     assert_response :success
   end
 end

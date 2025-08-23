@@ -7,7 +7,7 @@ class Web::ProfileControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get web_profile_index_url
+    get profile_index_url
     assert_response :success
   end
 end
