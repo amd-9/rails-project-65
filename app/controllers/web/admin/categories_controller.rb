@@ -1,4 +1,4 @@
-class Admin::CategoriesController < Admin::ApplicationController
+class Web::Admin::CategoriesController < Web::Admin::ApplicationController
     layout "layouts/admin"
 
     def index

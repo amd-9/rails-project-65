@@ -1,6 +1,6 @@
 require "test_helper"
 
-class Admin::CategoriesControllerTest < ActionDispatch::IntegrationTest
+class Web::Admin::CategoriesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @admin = users(:admin)
     @user = users(:one)

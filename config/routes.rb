@@ -20,13 +20,12 @@ Rails.application.routes.draw do
     resources :bulletins, only: %i[index new show create edit update archive]
     get "profile/index"
     post "/bulletins/:id/:to_state", to: "bulletins#change_state", as: :change_state_bulletin
-    # post "auth/:provider", to: "auth#request", as: :auth_request
-  end
 
-  namespace :admin do
-    resources :categories, only: %i[index new edit update create destroy]
-    resources :bulletins,  only: %i[index]
+    namespace :admin do
+      resources :categories, only: %i[index new edit update create destroy]
+      resources :bulletins,  only: %i[index]
 
-    root "bulletins#on_moderation"
+      root "bulletins#on_moderation"
+    end
   end
 end
