@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_08_17_123519) do
+ActiveRecord::Schema[7.2].define(version: 2025_08_24_080246) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -45,11 +45,11 @@ ActiveRecord::Schema[7.2].define(version: 2025_08_17_123519) do
     t.binary "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
+    t.integer "user", null: false
     t.integer "category_id", null: false
     t.string "state"
     t.index ["category_id"], name: "index_bulletins_on_category_id"
-    t.index ["user_id"], name: "index_bulletins_on_user_id"
+    t.index ["user"], name: "index_bulletins_on_user"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -69,5 +69,5 @@ ActiveRecord::Schema[7.2].define(version: 2025_08_17_123519) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bulletins", "categories"
-  add_foreign_key "bulletins", "users"
+  add_foreign_key "bulletins", "users", column: "user"
 end
