@@ -6,6 +6,7 @@ one:
   image: 
   creator: one
   category: one
+  state: draft
 
 two:
   title: Bulletin two
@@ -13,3 +14,4 @@ two:
   image: 
   creator: three
   category: two
+  state: under_moderation

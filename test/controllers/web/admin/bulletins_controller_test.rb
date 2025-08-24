@@ -5,6 +5,8 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
     @admin = users(:admin)
     @user = users(:one)
 
+    @bulletin = bulletins(:two)
+
     sign_in(@admin)
   end
 
@@ -23,5 +25,13 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
 
     get admin_bulletins_url
     assert_redirected_to root_path
+  end
+
+  test "should should publish" do
+    post change_state_bulletin_path(@bulletin, :archive)
+
+    published_bulletin = Bulletin.find(@bulletin.id)
+
+    assert published_bulletin.state, :published
   end
 end
