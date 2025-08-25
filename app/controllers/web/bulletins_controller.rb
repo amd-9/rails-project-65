@@ -32,7 +32,7 @@ class Web::BulletinsController < ApplicationController
     def update
         bulletin = Bulletin.find(params[:id])
 
-        if bulletin.creator != current_user
+        if bulletin.user != current_user
             return redirect_to root_path, notice: t("bulletin.state_change_not_permited")
         end
 
@@ -55,7 +55,7 @@ class Web::BulletinsController < ApplicationController
                 "to_moderate" => t("bulletins.to_moderate.success")
             }
 
-        if bulletin.creator != current_user and !current_user.admin?
+        if bulletin.user != current_user and !current_user.admin?
             redirect_back fallback_location: root_path, notice: t("bulletin.state_change_not_permited")
         end
 

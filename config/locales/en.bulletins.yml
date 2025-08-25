@@ -15,7 +15,7 @@ en:
     archive:
       success: Bulletin successfully archived
     show:
-      created:  "Created by %{creator} at %{created_at}"
+      created:  "Created by %{user} at %{created_at}"
     state_change_not_permited: Insufficient access rights!
   bulletins:
       index:

@@ -31,5 +31,5 @@ h2 = t('bulletins.index.title')
                         = link_to bulletin.title, bulletin_path(bulletin)
                     p.card-text.x-bulletin-description = bulletin.description
                 .card-footer
-                    small.text-body-secondary = t('bulletin.show.created', creator: bulletin.creator.name, created_at: bulletin.created_at)
+                    small.text-body-secondary = t('bulletin.show.created', user: bulletin.user.name, created_at: bulletin.created_at)
                     

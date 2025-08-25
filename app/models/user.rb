@@ -1,3 +1,3 @@
 class User < ApplicationRecord
-    has_many :bulletins, dependent: :destroy, inverse_of: :creator
+    has_many :bulletins, dependent: :destroy, inverse_of: :user
 end

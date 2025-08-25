@@ -27,7 +27,7 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_path
   end
 
-  test "should should publish" do
+  test "should publish bulletin" do
     post change_state_bulletin_path(@bulletin, :archive)
 
     published_bulletin = Bulletin.find(@bulletin.id)

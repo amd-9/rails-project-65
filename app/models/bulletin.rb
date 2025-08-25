@@ -9,7 +9,7 @@ class Bulletin < ApplicationRecord
     validates :user, presence: true
 
     belongs_to :category
-    belongs_to :creator, class_name: "User", foreign_key: :user, inverse_of: :bulletins
+    belongs_to :user, class_name: "User", foreign_key: :user_id, inverse_of: :bulletins
 
     aasm column: :state do
         state :draft, initial: true

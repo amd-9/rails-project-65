@@ -7,7 +7,7 @@
                 h5.card-title = @bulletin.title
                 p.card-text = @bulletin.description
                 p.card-text
-                    small.text-body-secondary = t('bulletin.show.created', creator: @bulletin.creator.name, created_at: @bulletin.created_at)
+                    small.text-body-secondary = t('bulletin.show.created', user: @bulletin.user.name, created_at: @bulletin.created_at)
 
 
 

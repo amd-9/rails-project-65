@@ -32,7 +32,7 @@ class Web::Admin::CategoriesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to admin_categories_path
   end
 
-  test "shhould not create category if user is not an admin" do
+  test "should not create category if user is not an admin" do
     sign_in(@user)
 
     attrs = {

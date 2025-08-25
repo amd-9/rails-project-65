@@ -4,7 +4,7 @@ one:
   title: Bulletion one
   description: Tasty potatoes are awesome
   image: 
-  creator: one
+  user: one
   category: one
   state: draft
 
@@ -12,6 +12,6 @@ two:
   title: Bulletin two
   description: Oranges seems to be orange
   image: 
-  creator: three
+  user: three
   category: two
   state: under_moderation
