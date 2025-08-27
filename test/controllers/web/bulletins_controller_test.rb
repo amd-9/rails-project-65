@@ -18,6 +18,12 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should get show" do
+    sign_in(@user)
+    get bulletin_path(@bulletin)
+    assert_response :success
+  end
+
   test "should get new" do
     sign_in(@user)
     assert signed_in?
