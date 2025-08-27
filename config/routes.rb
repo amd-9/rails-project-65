@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   root "web/bulletins#index"
 
+  post 'auth/:provider', to: 'auth#request', as: :auth_request
   get "auth/:provider/callback", to: "web/auth#callback", as: :callback_auth
   get "auth/logout", to: "web/auth#logout", as: :auth_logout
 
