@@ -27,5 +27,9 @@ Rails.application.routes.draw do
 
       root "bulletins#on_moderation"
     end
+
+    get "admin/bulletin/:id/publish", to: "admin/bulletins#publish", as: "publish_admin_bulletin"
+    get "admin/bulletin/:id/archive", to: "admin/bulletins#archive", as: "archive_admin_bulletin"
+    get "admin/bulletin/:id/reject", to: "admin/bulletins#reject", as: "reject_admin_bulletin"
   end
 end
