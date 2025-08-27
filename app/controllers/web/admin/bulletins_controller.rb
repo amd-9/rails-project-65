@@ -12,7 +12,7 @@ class Web::Admin::BulletinsController < Web::Admin::ApplicationController
 
     def publish
         bulletin = Bulletin.find(params[:id])
-        
+
         if !bulletin.may_publish?
             redirect_back fallback_location: root_path, notice: t("bulletin.state_change_not_permited")
         end

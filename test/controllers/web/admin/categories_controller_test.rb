@@ -5,7 +5,7 @@ class Web::Admin::CategoriesControllerTest < ActionDispatch::IntegrationTest
     @admin = users(:admin)
     @user = users(:one)
     @category = categories(:one)
-    
+
     sign_in(@admin)
   end
 
@@ -51,10 +51,10 @@ class Web::Admin::CategoriesControllerTest < ActionDispatch::IntegrationTest
       name: Faker::Science.element
     }
 
-    patch admin_category_path(@category), params: { category: attrs}
+    patch admin_category_path(@category), params: { category: attrs }
 
-    updated_category = Category.find_by(attrs);
-    
+    updated_category = Category.find_by(attrs)
+
     assert updated_category
     assert_redirected_to admin_categories_path
   end
