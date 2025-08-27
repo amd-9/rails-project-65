@@ -3,7 +3,7 @@ h2 = t('profile.index.title')
 = link_to t('bulletins.new.title'), new_bulletin_path, class: ["btn","btn-primary"]
 
 .card.mb-3.mt-3.rounded-3.shadow-sm.bg-light
-    = search_form_for @q, url: profile_index_path do |f|
+    = search_form_for @q, url: profile_path do |f|
         .d-flex.flex-row.align-items-center.flex-gap-2.justify-content-between.p-2
             .col-6
                 = f.label :title_cont

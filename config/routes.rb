@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   scope module: :web do
     resources :bulletins, only: %i[index new show create edit update archive]
-    get "profile/index"
+    get "profile/index", as: :profile
     post "/bulletins/:id/:to_state", to: "bulletins#change_state", as: :change_state_bulletin
 
     namespace :admin do

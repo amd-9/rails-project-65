@@ -8,7 +8,7 @@ nav.navbar.navbar-expand-lg.bg-body-tertiary
                 li.navbar-item
                     .nav-link = @user.name
                 li.navbar-item
-                    = link_to "My bulletins", profile_index_path, class: "nav-link"
+                    = link_to "My bulletins", profile_path, class: "nav-link"
             - if policy(:user).admin?
                 li.navbar-item
                     = link_to "Admin panel", admin_root_path, class: "nav-link"
