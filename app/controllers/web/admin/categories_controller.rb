@@ -18,7 +18,7 @@ class Web::Admin::CategoriesController < Web::Admin::ApplicationController
         if @category.update(category_params)
             redirect_to admin_categories_path
         else
-             render :edit, status: :unprocessable_entity
+            render :edit, status: :unprocessable_entity
         end
     end
 
