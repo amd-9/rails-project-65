@@ -28,10 +28,26 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should publish bulletin" do
-    post change_state_bulletin_path(@bulletin, :archive)
+    post publish_admin_bulletin_path(@bulletin)
 
     published_bulletin = Bulletin.find(@bulletin.id)
 
     assert published_bulletin.state, :published
+  end
+
+  test "should reject bulletin" do
+    post archive_admin_bulletin_path(@bulletin)
+
+    published_bulletin = Bulletin.find(@bulletin.id)
+
+    assert published_bulletin.state, :rejected
+  end
+
+  test "should archive bulletin" do
+    post reject_admin_bulletin_path(@bulletin)
+
+    published_bulletin = Bulletin.find(@bulletin.id)
+
+    assert published_bulletin.state, :archived
   end
 end
