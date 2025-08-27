@@ -17,20 +17,26 @@ Rails.application.routes.draw do
   get "auth/logout", to: "web/auth#logout", as: :auth_logout
 
   scope module: :web do
-    resources :bulletins, only: %i[index new show create edit update archive]
-    get "profile/index", as: :profile
-    post "/bulletins/:id/arhive", to: "bulletins#archive", as: :archive_bulletin
-    post "/bulletins/:id/to_moderate", to: "bulletins#to_moderate", as: :to_moderate_bulletin
+    resource :profile, controller: :profile, only: %i[show]
+
+    resources :bulletins, only: %i[index new show create edit update archive] do
+      member do
+          post "archive"
+          post "to_moderate"
+      end
+    end 
 
     namespace :admin do
       resources :categories, only: %i[index new edit update create destroy]
-      resources :bulletins,  only: %i[index]
+      resources :bulletins,  only: %i[index] do
+        member do
+          post "publish"
+          post "archive"
+          post "reject"
+        end
+      end
 
       root "bulletins#on_moderation"
     end
-
-    post "admin/bulletin/:id/publish", to: "admin/bulletins#publish", as: "publish_admin_bulletin"
-    post "admin/bulletin/:id/archive", to: "admin/bulletins#archive", as: "archive_admin_bulletin"
-    post "admin/bulletin/:id/reject", to: "admin/bulletins#reject", as: "reject_admin_bulletin"
   end
 end

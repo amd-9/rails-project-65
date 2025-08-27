@@ -122,6 +122,7 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
 
   test "should archive bulletin" do
     sign_in(@user)
+
     post archive_bulletin_path(@bulletin)
 
     archived_bulletin = Bulletin.find(@bulletin.id)
