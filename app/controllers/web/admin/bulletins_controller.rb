@@ -29,7 +29,7 @@ class Web::Admin::BulletinsController < Web::Admin::ApplicationController
         end
 
         bulletin.archive!
-        redirect_back fallback_location: root_path, notice: t("bulletins.pubarchivelish.success")
+        redirect_back fallback_location: root_path, notice: t("bulletins.archive.success")
     end
 
     def reject

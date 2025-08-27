@@ -43,6 +43,28 @@ class Web::BulletinsController < ApplicationController
         end
     end
 
+    def archive
+        bulletin = Bulletin.find(params[:id])
+
+        if !bulletin.may_archive?
+            redirect_back fallback_location: root_path, notice: t("bulletin.state_change_not_permited")
+        end
+
+        bulletin.archive!
+        redirect_back fallback_location: root_path, notice: t("bulletins.archive.success")
+    end
+
+    def to_moderate
+        bulletin = Bulletin.find(params[:id])
+
+        if !bulletin.may_to_moderate?
+            redirect_back fallback_location: root_path, notice: t("bulletin.state_change_not_permited")
+        end
+
+        bulletin.to_moderate!
+        redirect_back fallback_location: root_path, notice: t("bulletins.to_moderate.success")
+    end
+
     def change_state
         bulletin = Bulletin.find(params[:id])
         to_state = params[:to_state]

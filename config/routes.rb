@@ -19,7 +19,8 @@ Rails.application.routes.draw do
   scope module: :web do
     resources :bulletins, only: %i[index new show create edit update archive]
     get "profile/index", as: :profile
-    post "/bulletins/:id/:to_state", to: "bulletins#change_state", as: :change_state_bulletin
+    post "/bulletins/:id/arhive", to: "bulletins#archive", as: :archive_bulletin
+    post "/bulletins/:id/to_moderate", to: "bulletins#to_moderate", as: :to_moderate_bulletin
 
     namespace :admin do
       resources :categories, only: %i[index new edit update create destroy]
@@ -28,8 +29,8 @@ Rails.application.routes.draw do
       root "bulletins#on_moderation"
     end
 
-    get "admin/bulletin/:id/publish", to: "admin/bulletins#publish", as: "publish_admin_bulletin"
-    get "admin/bulletin/:id/archive", to: "admin/bulletins#archive", as: "archive_admin_bulletin"
-    get "admin/bulletin/:id/reject", to: "admin/bulletins#reject", as: "reject_admin_bulletin"
+    post "admin/bulletin/:id/publish", to: "admin/bulletins#publish", as: "publish_admin_bulletin"
+    post "admin/bulletin/:id/archive", to: "admin/bulletins#archive", as: "archive_admin_bulletin"
+    post "admin/bulletin/:id/reject", to: "admin/bulletins#reject", as: "reject_admin_bulletin"
   end
 end

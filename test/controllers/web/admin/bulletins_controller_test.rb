@@ -38,16 +38,16 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
   test "should reject bulletin" do
     post archive_admin_bulletin_path(@bulletin)
 
-    published_bulletin = Bulletin.find(@bulletin.id)
+    rejected_bulletin = Bulletin.find(@bulletin.id)
 
-    assert published_bulletin.state, :rejected
+    assert rejected_bulletin.state, :rejected
   end
 
   test "should archive bulletin" do
     post reject_admin_bulletin_path(@bulletin)
 
-    published_bulletin = Bulletin.find(@bulletin.id)
+    archived_bulletin = Bulletin.find(@bulletin.id)
 
-    assert published_bulletin.state, :archived
+    assert archived_bulletin.state, :archived
   end
 end

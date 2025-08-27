@@ -113,4 +113,13 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     assert_nil updated_bulletin
     assert_redirected_to root_path
   end
+
+  test "should archive bulletin" do
+    sign_in(@user)
+    post archive_bulletin_path(@bulletin)
+
+    archived_bulletin = Bulletin.find(@bulletin.id)
+
+    assert archived_bulletin.state, :rejected
+  end
 end

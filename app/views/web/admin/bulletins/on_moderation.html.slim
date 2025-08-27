@@ -14,11 +14,11 @@ table.table
                 td
                     .btn-group
                         - if bulletin.may_publish?
-                            = link_to t('bulletins.index.publish'), change_state_bulletin_path(bulletin, :publish),  data: { turbo_method: :post , turbo_confirm: t('bulletins.publish.confirm')}, class: ["me-1","btn","btn-primary"]
+                            = link_to t('bulletins.index.publish'), publish_admin_path(bulletin),  data: { turbo_method: :post , turbo_confirm: t('bulletins.publish.confirm')}, class: ["me-1","btn","btn-primary"]
                         - if bulletin.may_reject?
-                            = link_to t('bulletins.index.reject'),  change_state_bulletin_path(bulletin, :reject),  data: { turbo_method: :post , turbo_confirm: t('bulletins.reject.confirm')}, class: ["me-1","btn","btn-primary"]
+                            = link_to t('bulletins.index.reject'),  reject_admin_bulletin_path(bulletin),  data: { turbo_method: :post , turbo_confirm: t('bulletins.reject.confirm')}, class: ["me-1","btn","btn-primary"]
                         - if bulletin.may_archive?
-                            = link_to t('bulletins.index.send_to_archive'), change_state_bulletin_path(bulletin, :archive),  data: { turbo_method: :post , turbo_confirm: t('bulletins.archive.confirm')}, class: ["btn","btn-danger"]
+                            = link_to t('bulletins.index.send_to_archive'), archive_admin_bulletin_path(bulletin),  data: { turbo_method: :post , turbo_confirm: t('bulletins.archive.confirm')}, class: ["btn","btn-danger"]
 
 .d-flex.flex-row.justify-content-between.align-items-center
     .col
