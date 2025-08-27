@@ -2,7 +2,7 @@ require "test_helper"
 
 class Web::AuthControllerTest < ActionDispatch::IntegrationTest
   test "check github auth" do
-    post auth_request_path('github')
+    post auth_request_path("github")
     assert_response :redirect
   end
 
@@ -47,7 +47,7 @@ class Web::AuthControllerTest < ActionDispatch::IntegrationTest
     assert user
     assert signed_in?
 
-    get auth_logout_path
+    get logout_auth_path("github")
     assert !signed_in?
   end
 end

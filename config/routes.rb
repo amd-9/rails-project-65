@@ -10,14 +10,18 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   # Defines the root path route ("/")
-  # root "posts#index"
   root "web/bulletins#index"
 
-  post 'auth/:provider', to: 'auth#request', as: :auth_request
-  get "auth/:provider/callback", to: "web/auth#callback", as: :callback_auth
-  get "auth/logout", to: "web/auth#logout", as: :auth_logout
+  post "auth/:provider", to: "auth#request", as: :auth_request
 
   scope module: :web do
+    resources :auth, param: :provider do
+      member do
+        get "callback"
+        get "logout"
+      end
+    end
+
     resource :profile, controller: :profile, only: %i[show]
 
     resources :bulletins, only: %i[index new show create edit update archive] do
@@ -25,7 +29,7 @@ Rails.application.routes.draw do
           post "archive"
           post "to_moderate"
       end
-    end 
+    end
 
     namespace :admin do
       resources :categories, only: %i[index new edit update create destroy]

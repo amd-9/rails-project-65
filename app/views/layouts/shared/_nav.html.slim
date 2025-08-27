@@ -18,4 +18,4 @@ nav.navbar.navbar-expand-lg.bg-body-tertiary
                             i.bi.bi-github.me-2
                             span Login
             - if @user
-                = link_to "Logout", auth_logout_path, class: ["btn", "btn-primary"]
+                = link_to "Logout", logout_auth_path("github"), class: ["btn", "btn-primary"]
