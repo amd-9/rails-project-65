@@ -4,16 +4,14 @@ class Web::AuthController < ApplicationController
         user_nickname = user_info[:info][:nickname]
         user_email =  user_info[:info][:email]
 
-        user = User.find_by(name: user_nickname, email: user_email)
+        user = User.find_or_initialize_by(email: user_email)
 
-        if user
+        if user.persisted?
             session[:user_id] = user.id
             flash[:info] = "Wellcome back!"
             redirect_to root_path
             return
         end
-
-        user = User.new(name: user_nickname, email: user_email)
 
         if user.save
             flash[:info] = "Logged in successfully!"
