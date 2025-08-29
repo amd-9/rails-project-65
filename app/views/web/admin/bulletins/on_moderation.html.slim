@@ -15,7 +15,7 @@ table.table
                     .btn-group
                         - if bulletin.may_publish?
                             = link_to t('bulletins.index.publish'),
-                                publish_admin_path(bulletin),
+                                publish_admin_bulletin_path(bulletin),
                                 data: { turbo_method: :patch, turbo_confirm: t('bulletins.publish.confirm') }, class: %w[me-1 btn btn-primary]
                         - if bulletin.may_reject?
                             = link_to t('bulletins.index.reject'),

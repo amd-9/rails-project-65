@@ -10,7 +10,12 @@ class Web::BulletinsController < ApplicationController
 
   def show
     @bulletin = Bulletin.find(params[:id])
-    redirect_to bulletins_path, notice: t('bulletin.create.success') unless @bulletin.published?
+
+    if current_user.nil?
+      redirect_to bulletins_path, notice: t('bulletin.show.not_found') unless @bulletin.published?
+    else
+      redirect_to bulletins_path, notice: t('bulletin.show.not_found') unless @bulletin.user == current_user
+    end
   end
 
   def new
@@ -22,8 +27,7 @@ class Web::BulletinsController < ApplicationController
   end
 
   def create
-    @current_user = User.find(session[:user_id])
-    @bulletin = @current_user.bulletins.build(bulletin_params)
+    @bulletin = current_user.bulletins.build(bulletin_params)
 
     if @bulletin.save
       redirect_to bulletin_url(@bulletin), notice: t('bulletin.create.success')

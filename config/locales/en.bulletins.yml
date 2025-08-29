@@ -16,6 +16,7 @@ en:
       success: Bulletin successfully archived
     show:
       created:  "Created by %{user} at %{created_at}"
+      not_found: Bulletin does not exist or not accessable
     state_change_not_permited: Insufficient access rights!
   bulletins:
       index:
