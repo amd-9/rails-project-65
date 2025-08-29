@@ -8,5 +8,5 @@
                     li.nav-item = link_to t('categories.index.title'), admin_categories_path, class: class_names('nav-link', { active: current_page?(admin_categories_path) })
             .col-9
                 = yield
-        
+
 = render template: 'layouts/application'

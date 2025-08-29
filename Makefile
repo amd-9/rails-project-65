@@ -18,6 +18,9 @@ test:
 
 lint:
 	rubocop
+	make lint-slim
+
+lint-slim:
 	slim-lint app/**/*.slim
 
 lint-fix:

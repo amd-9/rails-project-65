@@ -1,4 +1,4 @@
-h2 =t('categories.index.title')
+h2 = t('categories.index.title')
 
 = link_to t('category.new.title'), new_admin_category_path, class: %w[btn btn-primary]
 
@@ -6,8 +6,8 @@ table.table
     thead
         tr
             th.col ID
-            th.col =t('categories.name')
-            th.col =t('categories.actions')
+            th.col = t('categories.name')
+            th.col = t('categories.actions')
     tbody
         - @categories.each do |category|
             tr

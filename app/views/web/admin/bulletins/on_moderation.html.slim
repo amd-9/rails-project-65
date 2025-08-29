@@ -2,7 +2,7 @@ h2 = t('bulletins.index.on_moderation_title')
 
 table.table
     thead
-        tr 
+        tr
             th.col = t('bulletins.index.item_title')
             th.col = t('bulletins.index.created_at')
             th.col = t('bulletins.index.actions')
@@ -14,11 +14,17 @@ table.table
                 td
                     .btn-group
                         - if bulletin.may_publish?
-                            = link_to t('bulletins.index.publish'), publish_admin_path(bulletin), data: { turbo_method: :patch, turbo_confirm: t('bulletins.publish.confirm') }, class: %w[me-1 btn btn-primary]
+                            = link_to t('bulletins.index.publish'), \
+                                publish_admin_path(bulletin),
+                                data: { turbo_method: :patch, turbo_confirm: t('bulletins.publish.confirm') }, class: %w[me-1 btn btn-primary]
                         - if bulletin.may_reject?
-                            = link_to t('bulletins.index.reject'), reject_admin_bulletin_path(bulletin), data: { turbo_method: :patch, turbo_confirm: t('bulletins.reject.confirm') }, class: %w[me-1 btn btn-primary]
+                            = link_to t('bulletins.index.reject'), \
+                                reject_admin_bulletin_path(bulletin),
+                                data: { turbo_method: :patch, turbo_confirm: t('bulletins.reject.confirm') }, class: %w[me-1 btn btn-primary]
                         - if bulletin.may_archive?
-                            = link_to t('bulletins.index.send_to_archive'), archive_admin_bulletin_path(bulletin), data: { turbo_method: :patch, turbo_confirm: t('bulletins.archive.confirm') }, class: %w[btn btn-danger]
+                            = link_to t('bulletins.index.send_to_archive'), \
+                                archive_admin_bulletin_path(bulletin),
+                                data: { turbo_method: :patch, turbo_confirm: t('bulletins.archive.confirm') }, class: %w[btn btn-danger]
 
 .d-flex.flex-row.justify-content-between.align-items-center
     .col

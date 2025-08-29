@@ -1,4 +1,7 @@
 ---
+plugins:
+  - rubocop-rails
+
 AllCops:
   TargetRubyVersion: 3.2.2
   NewCops: enable
@@ -11,9 +14,6 @@ AllCops:
     - 'vendor/**/*'
     - 'node_modules/**/*'
   SuggestExtensions: false
-
-require:
-  - rubocop-rails
 
 Rails:
   Enabled: true
