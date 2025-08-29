@@ -68,7 +68,6 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem 'dotenv-rails'
   gem 'rubocop-rails-omakase', require: false
-  gem 'rubocop-slim'
   gem 'slim_lint'
 end
 
