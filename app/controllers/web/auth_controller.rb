@@ -30,7 +30,7 @@ class Web::AuthController < ApplicationController
   end
 
   def logout
-    session[:user_id] = nil
+    reset_session
     redirect_to root_path, notice: t('auth.logout.success')
   end
 end
