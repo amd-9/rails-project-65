@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Web::Admin::ApplicationController < ApplicationController
   before_action :authorize_user
 
@@ -7,11 +9,11 @@ class Web::Admin::ApplicationController < ApplicationController
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def authorize_user
-      authorize :user, :admin?
+    authorize :user, :admin?
   end
 
   def user_not_authorized
-    flash[:alert] = "You are not authorized to perform this action."
+    flash[:alert] = t('auth.not_authorized')
     redirect_back_or_to(root_path)
   end
 end

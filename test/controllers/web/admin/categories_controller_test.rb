@@ -1,4 +1,6 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 
 class Web::Admin::CategoriesControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -9,22 +11,22 @@ class Web::Admin::CategoriesControllerTest < ActionDispatch::IntegrationTest
     sign_in(@admin)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get admin_categories_path
     assert_response :success
   end
 
-  test "should get new" do
+  test 'should get new' do
     get new_admin_category_path
     assert_response :success
   end
 
-  test "should create category" do
+  test 'should create category' do
     attrs = {
       name: Faker::Science.element
     }
 
-    assert_difference("Category.count") do
+    assert_difference('Category.count') do
       post admin_categories_url, params: { category: attrs }
     end
 
@@ -34,7 +36,7 @@ class Web::Admin::CategoriesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to admin_categories_path
   end
 
-  test "should not create category if user is not an admin" do
+  test 'should not create category if user is not an admin' do
     sign_in(@user)
 
     attrs = {
@@ -46,7 +48,7 @@ class Web::Admin::CategoriesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_path
   end
 
-  test "should update" do
+  test 'should update' do
     attrs = {
       name: Faker::Science.element
     }

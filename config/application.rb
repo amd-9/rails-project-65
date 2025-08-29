@@ -1,8 +1,10 @@
-require_relative "boot"
+# frozen_string_literal: true
 
-ENV["RANSACK_FORM_BUILDER"] = "::SimpleForm::FormBuilder"
+require_relative 'boot'
 
-require "rails/all"
+ENV['RANSACK_FORM_BUILDER'] = '::SimpleForm::FormBuilder'
+
+require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.

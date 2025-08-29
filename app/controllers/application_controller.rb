@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   include Pundit::Authorization
 
@@ -8,7 +10,7 @@ class ApplicationController < ActionController::Base
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def current_user
-      @user = User.find(session[:user_id]) if session[:user_id]
+    @user = User.find(session[:user_id]) if session[:user_id]
   end
 
   def user_signed_in?
@@ -16,7 +18,7 @@ class ApplicationController < ActionController::Base
   end
 
   def user_not_authorized
-    flash[:alert] = "You need to login or register to perform this action"
+    flash[:alert] = t('auth.not_logged_in')
     redirect_back_or_to(root_path)
   end
 end

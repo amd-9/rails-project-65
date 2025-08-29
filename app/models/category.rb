@@ -1,5 +1,7 @@
-class Category < ApplicationRecord
-     validates :name, presence: true
+# frozen_string_literal: true
 
-     has_many :bulletins, dependent: :destroy
+class Category < ApplicationRecord
+  validates :name, presence: true
+
+  has_many :bulletins, dependent: :destroy
 end

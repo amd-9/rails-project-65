@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Web::ProfileController < ApplicationController
   before_action :user_signed_in?
 

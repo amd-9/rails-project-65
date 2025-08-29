@@ -32,3 +32,13 @@ en:
     application:
       title: Awesome bulletin board
       log_in_via_github: Login via GitHub
+  auth:
+    logout:
+      success: Logged out successfully!
+    login: 
+      success: Logged in successfully!
+      error: Authorization error
+    not_logged_in: You need to login or register to perform this action
+    not_authorized: You are not authorized to perform this action
+    welcome_back: Welcome back!
+
