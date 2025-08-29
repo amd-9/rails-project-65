@@ -8,25 +8,28 @@
 
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Awesome bulletins board
 
-Things you may want to cover:
+# System requirements
+ * Ruby >= 3.2.2
+ * PostgreSQL 17
+ * SQLite 3 - for local development
+ * libvps and imagemagick - for image processing
 
-* Ruby version
+ # Setup
+ ```sh
+ make setup
+ make install
+ make test
+ ```
 
-* System dependencies
+ # Prepare DB
+```sh
+make db:migrate
+```
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+ # Run
+ ```sh
+ make start
+ ```
+ 
