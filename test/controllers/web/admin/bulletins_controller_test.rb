@@ -33,6 +33,7 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
     published_bulletin = Bulletin.find(@bulletin.id)
 
     assert published_bulletin.state, :published
+    assert_response :redirect
   end
 
   test "should reject bulletin" do
