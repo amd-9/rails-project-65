@@ -1,5 +1,5 @@
 class Web::BulletinsController < ApplicationController
-    before_action :user_signed_in?, except: [ :index ]
+    before_action :user_signed_in?, except: [ :index, :show ]
 
     def index
         @q = Bulletin.where(state: :published).ransack(params[:q])
@@ -12,6 +12,7 @@ class Web::BulletinsController < ApplicationController
 
     def show
         @bulletin = Bulletin.find(params[:id])
+        redirect_to bulletins_path, notice: t("bulletin.create.success") unless @bulletin.published?
     end
 
     def create

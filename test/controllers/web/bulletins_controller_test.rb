@@ -6,9 +6,10 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     @second_user = users(:two)
 
     @bulletin = bulletins(:one)
+    @published_bulletin = bulletins(:three)
 
     @bulletin.image.attach(file_fixture("cookie_fixture.jpg"))
-    @bulletin.save!
+    @published_bulletin.image.attach(file_fixture("cookie_fixture.jpg"))
 
     @category = categories(:one)
   end
@@ -19,8 +20,7 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get show" do
-    sign_in(@user)
-    get bulletin_path(@bulletin)
+    get bulletin_path(@published_bulletin)
     assert_response :success
   end
 
@@ -72,12 +72,9 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     assert_response :found
   end
 
-  test "should show bulletin" do
-    sign_in(@user)
-    assert signed_in?
-
+  test "should not show notpublished bulletin" do
     get bulletin_path(@bulletin)
-    assert_response :success
+    assert_response :redirect
   end
 
   test "should update bulletin" do

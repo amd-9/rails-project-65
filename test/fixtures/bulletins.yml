@@ -15,3 +15,11 @@ two:
   user: three
   category: two
   state: under_moderation
+
+three:
+  title: Bulletin three
+  description: Tomatoes are red
+  image: 
+  user: three
+  category: two
+  state: published
