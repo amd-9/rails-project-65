@@ -316,10 +316,6 @@ GEM
       rubocop (>= 1.72)
       rubocop-performance (>= 1.24)
       rubocop-rails (>= 2.30)
-    rubocop-slim (0.3.0)
-      lint_roller (>= 1.1)
-      rubocop (>= 1.72.1)
-      slimi (~> 0.7)
     ruby-progressbar (1.13.0)
     ruby-vips (2.2.4)
       ffi (~> 1.12)
@@ -342,10 +338,6 @@ GEM
       rexml (~> 3.2)
       rubocop (>= 1.0, < 2.0)
       slim (>= 3.0, < 6.0)
-    slimi (0.7.6)
-      temple
-      thor
-      tilt
     snaky_hash (2.0.3)
       hashie (>= 0.1.0, < 6)
       version_gem (>= 1.1.8, < 3)
@@ -417,7 +409,6 @@ DEPENDENCIES
   ransack
   rollbar
   rubocop-rails-omakase
-  rubocop-slim
   selenium-webdriver
   simple_form
   slim
