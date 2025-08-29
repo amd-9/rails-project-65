@@ -26,8 +26,8 @@ Rails.application.routes.draw do
 
     resources :bulletins, only: %i[index new show create edit update archive] do
       member do
-          post "archive"
-          post "to_moderate"
+          patch "archive"
+          patch "to_moderate"
       end
     end
 
@@ -35,9 +35,9 @@ Rails.application.routes.draw do
       resources :categories, only: %i[index new edit update create destroy]
       resources :bulletins,  only: %i[index] do
         member do
-          post "publish"
-          post "archive"
-          post "reject"
+          patch "publish"
+          patch "archive"
+          patch "reject"
         end
       end
 

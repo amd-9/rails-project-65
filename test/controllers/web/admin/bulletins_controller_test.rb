@@ -28,7 +28,7 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should publish bulletin" do
-    post publish_admin_bulletin_path(@bulletin)
+    patch publish_admin_bulletin_path(@bulletin)
 
     published_bulletin = Bulletin.find(@bulletin.id)
 
@@ -37,7 +37,7 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should reject bulletin" do
-    post archive_admin_bulletin_path(@bulletin)
+    patch archive_admin_bulletin_path(@bulletin)
 
     rejected_bulletin = Bulletin.find(@bulletin.id)
 
@@ -45,7 +45,7 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should archive bulletin" do
-    post reject_admin_bulletin_path(@bulletin)
+    patch reject_admin_bulletin_path(@bulletin)
 
     archived_bulletin = Bulletin.find(@bulletin.id)
 

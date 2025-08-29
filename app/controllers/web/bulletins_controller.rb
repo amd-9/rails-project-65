@@ -65,31 +65,6 @@ class Web::BulletinsController < ApplicationController
         redirect_back fallback_location: root_path, notice: t("bulletins.to_moderate.success")
     end
 
-    def change_state
-        bulletin = Bulletin.find(params[:id])
-        to_state = params[:to_state]
-        restricted_states = [ :reject, :publish ]
-        trasition_success_notices =
-            {
-                "reject" => t("bulletins.reject.success"),
-                "publish" => t("bulletins.publish.success"),
-                "archive" => t("bulletins.archive.success"),
-                "to_moderate" => t("bulletins.to_moderate.success")
-            }
-
-        if bulletin.user != current_user and !current_user.admin?
-            redirect_back fallback_location: root_path, notice: t("bulletin.state_change_not_permited")
-        end
-
-        if restricted_states.include? to_state and !user.admin?
-            redirect_back fallback_location: root_path, notice: t("bulletin.state_change_not_permited")
-        end
-
-        bulletin.aasm.fire!(to_state)
-
-        redirect_back fallback_location: root_path, notice: trasition_success_notices[to_state]
-    end
-
     private
 
     def bulletin_params
