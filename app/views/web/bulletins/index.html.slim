@@ -1,16 +1,16 @@
 h2 = t('bulletins.index.title')
 - if @user
-    = link_to t('bulletins.new.title'), new_bulletin_path, class: ["btn","btn-primary"]
+    = link_to t('bulletins.new.title'), new_bulletin_path, class: %w[btn btn-primary]
 
 .card.mb-3.mt-3.rounded-3.shadow-sm.bg-light
     = search_form_for @q, url: root_path do |f|
         .d-flex.flex-row.align-items-center.flex-gap-2.justify-content-between.p-2
             .col-6
                 = f.label :title_cont
-                = f.input :title_cont, label: false, class: "form-control"
+                = f.input :title_cont, label: false, class: 'form-control'
             .col-3
                 = f.label :category_id_eq
-                = f.input :category_id_eq, as: :select, collection: Category.all.map  { |c| [c.name, c.id] }, label: false, class: "form-control"
+                = f.input :category_id_eq, as: :select, collection: Category.all.map { |c| [c.name, c.id] }, label: false, class: 'form-control'
             .col-2.d-flex.flex-row
                 .col
                     = f.submit t('bulletins.index.search'), class: 'btn btn-primary'
@@ -25,7 +25,7 @@ h2 = t('bulletins.index.title')
         .col.mb-5
             .card.mb-4.rounded-3.shadow-sm.h-100
                 - if bulletin.image.attached?
-                    = image_tag bulletin.image.variant(resize_to_limit: [500, 500]), class: ["card-img-top","x-object-fit-cover"], height: 250
+                    = image_tag bulletin.image.variant(resize_to_limit: [500, 500]), class: %w[card-img-top x-object-fit-cover], height: 250
                 .card-body
                     h5.card-title 
                         = link_to bulletin.title, bulletin_path(bulletin)

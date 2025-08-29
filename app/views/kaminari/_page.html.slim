@@ -1,4 +1,4 @@
-li class=class_names("page-item", { "active": page.current? })
+li class=class_names('page-item', { active: page.current? })
   .page-link
-    = link_to_unless page.current?, page, url, {remote: remote, rel: page.rel}
+    = link_to_unless page.current?, page, url, { remote: remote, rel: page.rel }
 

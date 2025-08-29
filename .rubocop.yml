@@ -1,4 +1,6 @@
 ---
+plugins:
+  - rubocop-slim
 
 AllCops:
   TargetRubyVersion: 3.2.2

@@ -1,21 +1,21 @@
 nav.navbar.navbar-expand-lg.bg-body-tertiary
     .container-fluid
         a.navbar-brand href=root_path
-            = image_tag "bulletin-board.png", width: 50, height: 50
+            = image_tag 'bulletin-board.png', width: 50, height: 50
             span.ms-2 Awesome Bulletins
         ul.navbar-nav.d-flex.align-items-center
             - if @user
                 li.navbar-item
                     .nav-link = @user.name
                 li.navbar-item
-                    = link_to "My bulletins", profile_path, class: "nav-link"
+                    = link_to 'My bulletins', profile_path, class: 'nav-link'
             - if policy(:user).admin?
                 li.navbar-item
-                    = link_to "Admin panel", admin_root_path, class: "nav-link"
+                    = link_to 'Admin panel', admin_root_path, class: 'nav-link'
             - unless @user
-                = form_tag(auth_request_path("github"), method: 'post', data: { turbo: false}) do
+                = form_tag(auth_request_path('github'), method: 'post', data: { turbo: false }) do
                         button.btn.btn-primary type='submit'
                             i.bi.bi-github.me-2
                             span Login
             - if @user
-                = link_to "Logout", logout_auth_path("github"), class: ["btn", "btn-primary"]
+                = link_to 'Logout', logout_auth_path('github'), class: %w[btn btn-primary]
