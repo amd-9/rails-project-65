@@ -7,6 +7,9 @@ en:
       title: Edit category
     destroy:
       title: Delete
+      success: Category successfully deleted
+      failure: Cannot delete category
+      failure_not_empty: Cannot delete not empty category
   categories:
       index:
         title: Categories

@@ -7,6 +7,7 @@ class Web::Admin::CategoriesControllerTest < ActionDispatch::IntegrationTest
     @admin = users(:admin)
     @user = users(:one)
     @category = categories(:one)
+    @second_category = categories(:two)
 
     sign_in(@admin)
   end
@@ -59,5 +60,13 @@ class Web::Admin::CategoriesControllerTest < ActionDispatch::IntegrationTest
 
     assert updated_category
     assert_redirected_to admin_categories_path
+  end
+
+  test 'should not delete category with bulletins' do
+    delete admin_category_path(@second_category)
+
+    deleted_category = Category.find_by(id: @second_category.id)
+
+    assert_not_nil deleted_category
   end
 end

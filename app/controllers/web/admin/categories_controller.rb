@@ -36,9 +36,13 @@ class Web::Admin::CategoriesController < Web::Admin::ApplicationController
 
   def destroy
     @category = Category.find(params[:id])
-    @category.destroy
 
-    redirect_to admin_categories_path
+    if @category.bulletins.any?
+      redirect_to admin_categories_path, notice: t('category.destroy.failure_not_empty')
+    else
+      @category.destroy
+      redirect_to admin_categories_path
+    end
   end
 
   private
