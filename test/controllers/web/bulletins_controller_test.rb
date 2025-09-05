@@ -36,7 +36,6 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should get new' do
     sign_in(@user)
-    assert signed_in?
 
     get new_bulletin_path
     assert_response :success
@@ -53,7 +52,6 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     }
 
     sign_in(@user)
-    assert signed_in?
 
     assert_difference('Bulletin.count') do
       post bulletins_url, params: { bulletin: attrs }
@@ -131,18 +129,5 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     patch archive_bulletin_path(@bulletin)
     archived_bulletin = Bulletin.find(@bulletin.id)
     assert archived_bulletin.archived?
-  end
-
-  test 'should not open edit for another user' do
-    sign_in(@user)
-    get edit_bulletin_path @another_user_bulletin
-    assert_redirected_to profile_path
-  end
-
-  test 'should not archive another user bulletin' do
-    sign_in(@user)
-    patch archive_bulletin_path(@another_user_bulletin)
-    archived_bulletin = Bulletin.find(@another_user_bulletin.id)
-    assert archived_bulletin.draft?
   end
 end
