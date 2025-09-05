@@ -23,3 +23,11 @@ three:
   user: three
   category: two
   state: published
+
+fourth:
+  title: Bulletin four
+  description: Potatoes are tasty
+  image: 
+  user: three
+  category: two
+  state: draft

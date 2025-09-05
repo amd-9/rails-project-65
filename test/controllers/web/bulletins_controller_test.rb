@@ -8,9 +8,11 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     @second_user = users(:two)
 
     @bulletin = bulletins(:one)
+    @another_user_bulletin = bulletins(:fourth)
     @published_bulletin = bulletins(:three)
 
     @bulletin.image.attach(file_fixture('cookie_fixture.jpg'))
+    @another_user_bulletin.image.attach(file_fixture('cookie_fixture.jpg'))
     @published_bulletin.image.attach(file_fixture('cookie_fixture.jpg'))
 
     @category = categories(:one)
@@ -23,6 +25,12 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should get show' do
     get bulletin_path(@published_bulletin)
+    assert_response :success
+  end
+
+  test 'should get edit' do
+    sign_in(@user)
+    get bulletin_path(@bulletin)
     assert_response :success
   end
 
@@ -127,5 +135,11 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     archived_bulletin = Bulletin.find(@bulletin.id)
 
     assert archived_bulletin.state, :rejected
+  end
+
+  test 'should not open edit for another user' do
+    sign_in(@user)
+    get edit_bulletin_path @another_user_bulletin
+    assert_redirected_to profile_path
   end
 end
