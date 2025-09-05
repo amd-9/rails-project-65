@@ -41,4 +41,12 @@ en:
     not_logged_in: You need to login or register to perform this action
     not_authorized: You are not authorized to perform this action
     welcome_back: Welcome back!
+  activerecord:
+    events:
+      bulletin:
+        draft: Draft
+        under_moderation: Under moderation
+        published: Published
+        rejected: Rejected
+        archived: Archived
 
