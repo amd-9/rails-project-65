@@ -78,7 +78,6 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     }
 
     post bulletins_url, params: { bulletin: attrs }
-
     assert_response :found
   end
 
@@ -129,17 +128,21 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should archive bulletin' do
     sign_in(@user)
-
     patch archive_bulletin_path(@bulletin)
-
     archived_bulletin = Bulletin.find(@bulletin.id)
-
-    assert archived_bulletin.state, :rejected
+    assert archived_bulletin.archived?
   end
 
   test 'should not open edit for another user' do
     sign_in(@user)
     get edit_bulletin_path @another_user_bulletin
     assert_redirected_to profile_path
+  end
+
+  test 'should not archive another user bulletin' do
+    sign_in(@user)
+    patch archive_bulletin_path(@another_user_bulletin)
+    archived_bulletin = Bulletin.find(@another_user_bulletin.id)
+    assert archived_bulletin.draft?
   end
 end
