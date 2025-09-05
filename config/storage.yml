@@ -9,8 +9,8 @@ local:
 selectel:
   service: S3
   endpoint: <%= ENV.fetch('S3_ENDPOINT', nil) %>
-  access_key_id: <%= ENV.fetch('S3_KEY_ID', nil) %>
-  secret_access_key: <%= ENV.fetch('S3_ACCESS_KEY', nil) %>
+  access_key_id: <%= ENV.fetch('S3_ACCESS_KEY_ID', nil) %>
+  secret_access_key: <%= ENV.fetch('S3_SECRET_ACCESS_KEY', nil) %>
   region: <%= ENV.fetch('S3_REGION', nil) %>
   bucket: <%= ENV.fetch('S3_BUCKET', nil) %>
 
