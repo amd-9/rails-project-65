@@ -11,7 +11,7 @@ h2 = t('bulletins.index.title')
                 = f.input :state_eq,
                     as: :select,
                     label: false, class: 'form-control',
-                    collection: Bulletin.aasm.states.map { |state| Bulletin.aasm.human_event_name(state.name) }
+                    collection: Bulletin.aasm.states.map { |state| [Bulletin.aasm.human_event_name(state.name), state.name] }
             .col-2.d-flex.flex-row
                 .col
                     = f.submit t('bulletins.index.search'), class: 'btn btn-primary'
