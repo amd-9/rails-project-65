@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
     resource :profile, controller: :profile, only: %i[show]
 
-    resources :bulletins, only: %i[index new show create edit update archive] do
+    resources :bulletins, only: %i[index new show create edit update] do
       member do
         patch 'archive'
         patch 'to_moderate'
