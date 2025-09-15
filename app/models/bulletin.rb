@@ -10,7 +10,7 @@ class Bulletin < ApplicationRecord
   validates :image, attached: true, content_type: %i[png jpg jpeg], size: { less_than: 5.megabytes }
 
   belongs_to :category
-  belongs_to :user, class_name: 'User', inverse_of: :bulletins
+  belongs_to :user, class_name: 'User'
 
   aasm column: :state do
     state :draft, initial: true
