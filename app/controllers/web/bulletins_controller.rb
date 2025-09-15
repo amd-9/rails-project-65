@@ -40,14 +40,14 @@ class Web::BulletinsController < ApplicationController
   end
 
   def update
-    bulletin = Bulletin.find(params[:id])
+    @bulletin = Bulletin.find(params[:id])
 
-    if bulletin.user != current_user
+    if @bulletin.user != current_user
       return redirect_to root_path, notice: t('bulletin.insufficient_access_rights')
     end
 
-    if bulletin.update(bulletin_params)
-      redirect_to bulletin_path(bulletin), notice: t('bulletin.update.success')
+    if @bulletin.update(bulletin_params)
+      redirect_to bulletin_path(@bulletin), notice: t('bulletin.update.success')
     else
       render :edit, status: :unprocessable_entity
     end
