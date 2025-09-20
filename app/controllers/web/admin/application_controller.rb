@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Web::Admin::ApplicationController < Web::ApplicationController
+  layout 'layouts/admin'
+
   before_action :authorize_admin
 
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
