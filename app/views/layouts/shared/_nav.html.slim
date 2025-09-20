@@ -4,18 +4,18 @@ nav.navbar.navbar-expand-lg.bg-body-tertiary
             = image_tag 'bulletin-board.png', width: 50, height: 50
             span.ms-2 Awesome Bulletins
         ul.navbar-nav.d-flex.align-items-center
-            - if @user
+            - if policy(:user).user
                 li.navbar-item
-                    .nav-link = @user.name
+                    .nav-link = policy(:user).user.name
                 li.navbar-item
                     = link_to 'My bulletins', profile_path, class: 'nav-link'
             - if policy(:user).admin?
                 li.navbar-item
                     = link_to 'Admin panel', admin_root_path, class: 'nav-link'
-            - unless @user
+            - unless policy(:user).user
                 = form_tag(auth_request_path('github'), method: 'post', data: { turbo: false }) do
                         button.btn.btn-primary type='submit'
                             i.bi.bi-github.me-2
                             span Login
-            - if @user
+            - if policy(:user).user
                 = link_to 'Logout', logout_auth_path('github'), class: %w[btn btn-primary]

@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-class Web::BulletinsController < ApplicationController
+class Web::BulletinsController < Web::ApplicationController
   before_action :user_signed_in?, except: %i[index show]
+  before_action :current_user, except: %i[index new]
 
   def index
     @q = Bulletin.where(state: :published).ransack(params[:q])
@@ -11,7 +12,7 @@ class Web::BulletinsController < ApplicationController
   def show
     @bulletin = Bulletin.find(params[:id])
 
-    if current_user.nil?
+    if @current_user.nil?
       redirect_to bulletins_path, notice: t('bulletin.show.not_found') unless @bulletin.published?
     else
       redirect_to bulletins_path, notice: t('bulletin.show.not_found') unless @bulletin.user == current_user
@@ -24,13 +25,13 @@ class Web::BulletinsController < ApplicationController
 
   def edit
     @bulletin = Bulletin.find(params[:id])
-    return unless @bulletin.user != current_user
+    return unless @bulletin.user != @current_user
 
     redirect_to profile_path, notice: t('bulletin.insufficient_access_rights')
   end
 
   def create
-    @bulletin = current_user.bulletins.build(bulletin_params)
+    @bulletin = @current_user.bulletins.build(bulletin_params)
 
     if @bulletin.save
       redirect_to bulletin_url(@bulletin), notice: t('bulletin.create.success')
@@ -42,7 +43,7 @@ class Web::BulletinsController < ApplicationController
   def update
     @bulletin = Bulletin.find(params[:id])
 
-    if @bulletin.user != current_user
+    if @bulletin.user != @current_user
       return redirect_to root_path, notice: t('bulletin.insufficient_access_rights')
     end
 
@@ -56,7 +57,7 @@ class Web::BulletinsController < ApplicationController
   def archive
     bulletin = Bulletin.find(params[:id])
 
-    if !bulletin.may_archive? || (bulletin.user != current_user)
+    if !bulletin.may_archive? || (bulletin.user != @current_user)
       return redirect_back fallback_location: root_path, notice: t('bulletin.insufficient_access_rights')
     end
 
@@ -67,7 +68,7 @@ class Web::BulletinsController < ApplicationController
   def to_moderate
     bulletin = Bulletin.find(params[:id])
 
-    if !bulletin.may_to_moderate? || (bulletin.user != current_user)
+    if !bulletin.may_to_moderate? || (bulletin.user != @current_user)
       return redirect_back fallback_location: root_path, notice: t('bulletin.insufficient_access_rights')
     end
 
