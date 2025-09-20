@@ -2,20 +2,7 @@ h2 = t('bulletins.index.title')
 - if @user
     = link_to t('bulletins.new.title'), new_bulletin_path, class: %w[btn btn-primary]
 
-.card.mb-3.mt-3.rounded-3.shadow-sm.bg-light
-    = search_form_for @q, url: root_path do |f|
-        .d-flex.flex-row.align-items-center.flex-gap-2.justify-content-between.p-2
-            .col-6
-                = f.label :title_cont
-                = f.input :title_cont, label: false, class: 'form-control'
-            .col-3
-                = f.label :category_id_eq
-                = f.input :category_id_eq, as: :select, collection: Category.all.map { |c| [c.name, c.id] }, label: false, class: 'form-control'
-            .col-2.d-flex.flex-row
-                .col
-                    = f.submit t('bulletins.index.search'), class: 'btn btn-primary'
-                .col
-                    = link_to t('bulletins.index.reset'), url_for, class: 'btn btn-outline-primary'
+= render 'web/bulletins/search', q: @q, search_form_path: root_path, search_by: :category
 
 .row.row-cols-1.row-cols-md-5.mb-5.
     - if @bulletins.empty?
