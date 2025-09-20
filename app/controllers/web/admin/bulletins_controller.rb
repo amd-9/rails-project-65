@@ -4,7 +4,7 @@ class Web::Admin::BulletinsController < Web::Admin::ApplicationController
   layout 'layouts/admin'
 
   def on_moderation
-    @bulletins = Bulletin.where(state: :under_moderation).order(created_at: :desc).page(params[:page]).per(10)
+    @bulletins = Bulletin.under_moderation.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def index

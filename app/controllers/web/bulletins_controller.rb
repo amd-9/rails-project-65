@@ -5,7 +5,7 @@ class Web::BulletinsController < Web::ApplicationController
   before_action :current_user, except: %i[index new]
 
   def index
-    @q = Bulletin.where(state: :published).ransack(params[:q])
+    @q = Bulletin.published.ransack(params[:q])
     @bulletins = @q.result.order(created_at: :desc)
   end
 
