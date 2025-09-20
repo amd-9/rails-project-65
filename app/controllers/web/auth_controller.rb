@@ -7,21 +7,12 @@ class Web::AuthController < ApplicationController
     user_email = user_info[:info][:email]
 
     user = User.find_or_initialize_by(email: user_email)
-    current_user_name = user.name
     user.name = user_name
 
-    if user.persisted?
-      session[:user_id] = user.id
-      flash[:info] = t('auth.welcome_back')
-
-      user.save! unless current_user_name == user_name
-
-      redirect_to root_path
-      return
-    end
+    flash_message = user.persisted? ? t('auth.welcome_back') : t('auth.login.success')
 
     if user.save
-      flash[:info] = t('auth.login.success')
+      flash[:info] = flash_message
       session[:user_id] = user.id
     else
       flash[:alert] = t('auth.login.error')
