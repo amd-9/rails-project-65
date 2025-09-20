@@ -16,7 +16,7 @@ class Web::Admin::BulletinsController < Web::Admin::ApplicationController
     bulletin = Bulletin.find(params[:id])
 
     unless bulletin.may_publish?
-      redirect_back fallback_location: root_path, notice: t('bulletin.insufficient_access_rights')
+      redirect_back fallback_location: root_path, notice: t('bulletin.action_not_permitted')
     end
 
     bulletin.publish!
@@ -27,7 +27,7 @@ class Web::Admin::BulletinsController < Web::Admin::ApplicationController
     bulletin = Bulletin.find(params[:id])
 
     unless bulletin.may_archive?
-      redirect_back fallback_location: root_path, notice: t('bulletin.insufficient_access_rights')
+      redirect_back fallback_location: root_path, notice: t('bulletin.action_not_permitted')
     end
 
     bulletin.archive!
@@ -38,7 +38,7 @@ class Web::Admin::BulletinsController < Web::Admin::ApplicationController
     bulletin = Bulletin.find(params[:id])
 
     unless bulletin.may_reject?
-      redirect_back fallback_location: root_path, notice: t('bulletin.insufficient_access_rights')
+      redirect_back fallback_location: root_path, notice: t('bulletin.action_not_permitted')
     end
 
     bulletin.reject!

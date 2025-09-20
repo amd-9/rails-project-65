@@ -11,12 +11,7 @@ class Web::BulletinsController < Web::ApplicationController
 
   def show
     @bulletin = Bulletin.find(params[:id])
-
-    if @current_user.nil?
-      redirect_to bulletins_path, notice: t('bulletin.show.not_found') unless @bulletin.published?
-    else
-      redirect_to bulletins_path, notice: t('bulletin.show.not_found') unless @bulletin.user == current_user
-    end
+    authorize @bulletin
   end
 
   def new
@@ -25,9 +20,7 @@ class Web::BulletinsController < Web::ApplicationController
 
   def edit
     @bulletin = Bulletin.find(params[:id])
-    return unless @bulletin.user != @current_user
-
-    redirect_to profile_path, notice: t('bulletin.insufficient_access_rights')
+    authorize @bulletin
   end
 
   def create
@@ -42,10 +35,7 @@ class Web::BulletinsController < Web::ApplicationController
 
   def update
     @bulletin = Bulletin.find(params[:id])
-
-    if @bulletin.user != @current_user
-      return redirect_to root_path, notice: t('bulletin.insufficient_access_rights')
-    end
+    authorize @bulletin
 
     if @bulletin.update(bulletin_params)
       redirect_to bulletin_path(@bulletin), notice: t('bulletin.update.success')
@@ -56,10 +46,7 @@ class Web::BulletinsController < Web::ApplicationController
 
   def archive
     bulletin = Bulletin.find(params[:id])
-
-    if !bulletin.may_archive? || (bulletin.user != @current_user)
-      return redirect_back fallback_location: root_path, notice: t('bulletin.insufficient_access_rights')
-    end
+    authorize bulletin
 
     bulletin.archive!
     redirect_back fallback_location: root_path, notice: t('bulletins.archive.success')
@@ -67,10 +54,7 @@ class Web::BulletinsController < Web::ApplicationController
 
   def to_moderate
     bulletin = Bulletin.find(params[:id])
-
-    if !bulletin.may_to_moderate? || (bulletin.user != @current_user)
-      return redirect_back fallback_location: root_path, notice: t('bulletin.insufficient_access_rights')
-    end
+    authorize bulletin
 
     bulletin.to_moderate!
     redirect_back fallback_location: root_path, notice: t('bulletins.to_moderate.success')
