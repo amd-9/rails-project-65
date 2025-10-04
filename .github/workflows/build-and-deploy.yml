@@ -16,7 +16,7 @@ on:
 jobs:
   build-and-push-images:
     runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.build_images == 'true')
+    if: ${{ github.event.inputs.build_images == 'true' }}
     permissions:
       contents: read
       packages: write
