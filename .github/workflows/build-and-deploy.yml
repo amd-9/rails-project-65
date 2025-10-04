@@ -105,6 +105,9 @@ jobs:
             echo "Pulling new images"
             docker compose -f docker-compose.yml -f docker-compose.prod.yml pull
 
+            echo "Preparing .env file"
+            touch .env
+
             echo "Starting up containers"
             docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
 
