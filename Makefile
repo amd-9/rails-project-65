@@ -29,4 +29,10 @@ lint-fix:
 db-migrate:
 	bin/rails db:migrate
 
+compose-start:
+	docker compose up -d
+
+compose-clear:
+	docker compose down -v
+
 .PHONY: test
