@@ -83,7 +83,7 @@ jobs:
           PGPASSWORD: ${{ secrets.PGPASSWORD }}
           PGUSER: ${{ secrets.PGUSER }}
           SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE }}
-          GITHUB_REPOSITORY: ${{ github.repository }
+          GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_ACTOR: ${{ secrets.actor }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
