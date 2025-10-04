@@ -7,10 +7,16 @@ on:
         description: "Environment to deploy to"
         required: true
         type: environment
+      build_images: 
+        description: "Build image prior to deploy"
+        required: true
+        type: boolean
+        default: false
 
 jobs:
   build-and-push-images:
     runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.build_images == 'true')
     permissions:
       contents: read
       packages: write
@@ -58,8 +64,8 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
-          source: "./docker-compose.prod.yml"
-          target: "./app/docler-compose.yml"
+          source: "./docker-compose.prod.yml, ./docker-compose.yml"
+          target: "./app"
 
       - name: Prepare environment
         uses: appleboy/ssh-action@v1
@@ -72,7 +78,10 @@ jobs:
             uname -a
             cd ./app
 
-            export "Preparing environment variables"
+            echo "Stopping containers for update"
+            docker compose -f docker-compose.yml -f docker-compose.prod.yml down
+
+            echo "Preparing environment variables"
             export GITHUB_CLIENT_ID=${{ secrets.CLIENT_ID }}
             export GITHUB_CLIENT_SECRET=${{ secrets.CLIENT_SECRET }}
             export S3_ENDPOINT=${{ vars.S3_ENDPOINT }}
@@ -80,17 +89,19 @@ jobs:
             export S3_SECRET_ACCESS_KEY=${{ secrets.S3_SECRET_ACCESS_KEY }}
             export S3_REGION=${{ vars.S3_REGION }}
             export S3_BUCKET=${{ vars.S3_BUCKET }}
-            export DATABASE_URL=${ vars.DATABASE_URL }}
+            export DATABASE_URL=${{ vars.DATABASE_URL }}
             export PGPASSWORD=${{ secrets.PGPASSWORD }}
             export PGUSER=${{ secrets.PGUSER }}
             export SECRET_KEY_BASE=${{ secrets.SECRET_KEY_BASE }}
 
-            echo "Stopping containers for update"
-            docker compose down
             echo "Logging in to github container registry"
-            echodocker login ghcr.io/${{ github.repository }} -u ${{ secrets.actor }} -p {{ secrets.GITHUB_TOKEN }}
+            docker login ghcr.io/${{ github.repository }} -u ${{ secrets.actor }} -p {{ secrets.GITHUB_TOKEN }}
+
             echo "Pulling new images"
-            docker compose pull
+            docker compose -f docker-compose.yml -f docker-compose.prod.yml pull
+
             echo "Starting up containers"
-            docker compose up -d
+            docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+
             echo "Logging out from registry"
+            docker logout
