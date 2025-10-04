@@ -45,6 +45,8 @@ jobs:
 
   deploy:
     needs: build-and-push-images
+    if: |
+     always() && (needs.build-and-push-images.result == 'success' || needs.build-and-push-images.result == 'skipped')
     runs-on: ubuntu-latest
     permissions:
       contents: read
