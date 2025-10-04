@@ -34,14 +34,17 @@ jobs:
         with:
           context: .
           push: true
+          platforms: linux/amd64,linux/arm64
           tags: ghcr.io/${{ github.repository }}/awesome-bulletins:latest
 
   deploy:
+    needs: build-and-push-images
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: read
     environment: ${{ github.event.inputs.environment }}
+
     steps:
       - name: Print selected environment
         run: |
@@ -53,23 +56,24 @@ jobs:
         uses: appleboy/scp-action@v1
         with:
           host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.DEPLOY_USERNAME }}
-          password: ${{ secrets.SSH_PASSWORD }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
           source: "./docker-compose.yml"
+          target: "./app"
 
       - name: Prepare environment
         uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.DEPLOY_USERNAME }}
-          password: ${{ secrets.SSH_PASSWORD }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
           script: |
             whoami
             uname -a
             echo "Stopping containers for update"
             docker compose down
             echo "Logging in to github container registry"
-            echodocker login ghcr.io/${{ github.repository }} -u ${{ secrets.DEPLOY_USERNAME }} -p {{ secrets.DEPLOY_USER_REGISTRY_PASSWORD }}
+            echodocker login ghcr.io/${{ github.repository }} -u ${{ secrets.SSH_USERNAME }} -p {{ secrets.DEPLOY_USER_REGISTRY_PASSWORD }}
             echo "Pulling new images"
             docker compose pull
             echo "Starting up containers"
