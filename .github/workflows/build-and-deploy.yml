@@ -52,7 +52,7 @@ jobs:
       - name: Copy files via SSH
         uses: appleboy/scp-action@v1
         with:
-          host: ${{ secrects:SSH_HOST }}
+          host: ${{ secrets:SSH_HOST }}
           username: ${{ secrets.DEPLOY_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           source: "./docker-compose.yml"
@@ -60,7 +60,7 @@ jobs:
       - name: Prepare environment
         uses: appleboy/ssh-action@v1
         with:
-          host: ${{ secrects:SSH_HOST }}
+          host: ${{ secrets:SSH_HOST }}
           username: ${{ secrets.DEPLOY_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
