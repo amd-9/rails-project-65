@@ -41,6 +41,7 @@ jobs:
     permissions:
       contents: read
       packages: read
+    environment: ${{ github.event.inputs.environment }}
     steps:
       - name: Print selected environment
         run: |
@@ -61,7 +62,7 @@ jobs:
         with:
           host: ${{ secrects:SSH_HOST }}
           username: ${{ secrets.DEPLOY_USERNAME }}
-          password: ${{ secrects.SSH_PASSWORD }}
+          password: ${{ secrets.SSH_PASSWORD }}
           script: |
             whoami
             uname -a
