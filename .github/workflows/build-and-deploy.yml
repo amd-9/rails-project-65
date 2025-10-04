@@ -54,7 +54,7 @@ jobs:
         with:
           host: ${{ secrects:SSH_HOST }}
           username: ${{ secrets.DEPLOY_USERNAME }}
-          password: ${{ secrects.SSH_PASSWORD }}
+          password: ${{ secrets.SSH_PASSWORD }}
           source: "./docker-compose.yml"
 
       - name: Prepare environment
