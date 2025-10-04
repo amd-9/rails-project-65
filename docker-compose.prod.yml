@@ -11,3 +11,13 @@ services:
       - S3_BUCKET=${S3_BUCKET}
       - DATABASE_URL=${DATABASE_URL}
       - SECRET_KEY_BASE=${SECRET_KEY_BASE}
+    networks:
+      rails:
+      rails_db:
+  postgres:
+    networks:
+      rails_db:
+
+networks:
+  rails:
+  rails_db:
