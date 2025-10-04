@@ -58,8 +58,8 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
-          source: "./docker-compose.yml"
-          target: "./app"
+          source: "./docker-compose.prod.yml"
+          target: "./app/docler-compose.yml"
 
       - name: Prepare environment
         uses: appleboy/ssh-action@v1
@@ -70,6 +70,21 @@ jobs:
           script: |
             whoami
             uname -a
+            cd ./app
+
+            export "Preparing environment variables"
+            export GITHUB_CLIENT_ID=${{CLIENT_ID}}
+            export GITHUB_CLIENT_SECRET=${{CLIENT_SECRET}}
+            export S3_ENDPOINT=${{S3_ENDPOINT}}
+            export S3_ACCESS_KEY_ID=${{S3_ACCESS_KEY_ID}}
+            export S3_SECRET_ACCESS_KEY=${{S3_SECRET_ACCESS_KEY}}
+            export S3_REGION=${{S3_REGION}}
+            export S3_BUCKET=${{S3_BUCKET}}
+            export DATABASE_URL=${{DATABASE_URL}}
+            export PGPASSWORD=${{PGPASSWORD}}
+            export PGUSER=${{PGUSER}}
+            export SECRET_KEY_BASE=${{SECRET_KEY_BASE}}
+
             echo "Stopping containers for update"
             docker compose down
             echo "Logging in to github container registry"
