@@ -2,7 +2,6 @@
 
 class Web::BulletinsController < Web::ApplicationController
   before_action :user_signed_in?, except: %i[index show]
-  before_action :current_user, except: %i[index new]
 
   def index
     @q = Bulletin.published.ransack(params[:q])
@@ -24,7 +23,7 @@ class Web::BulletinsController < Web::ApplicationController
   end
 
   def create
-    @bulletin = @current_user.bulletins.build(bulletin_params)
+    @bulletin = current_user.bulletins.build(bulletin_params)
 
     if @bulletin.save
       redirect_to bulletin_url(@bulletin), notice: t('bulletin.create.success')
