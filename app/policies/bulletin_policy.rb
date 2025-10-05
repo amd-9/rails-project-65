@@ -34,6 +34,6 @@ class BulletinPolicy
   def to_moderate?
     return true if @user.admin?
 
-    @bulletin.user == @user && @bulletin.to_moderate?
+    @bulletin.user == @user && @bulletin.may_to_moderate?
   end
 end

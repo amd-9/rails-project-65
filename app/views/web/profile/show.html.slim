@@ -20,15 +20,15 @@ table.table
                 td
                     .btn-group
                         = link_to t('bulletins.index.show'), bulletin_path(bulletin), class: %w[me-1 btn btn-primary]
-                        - if bulletin.draft? || bulletin.rejected?
+                        - if policy(bulletin).edit?
                             = link_to t('bulletins.index.edit'),
                                 edit_bulletin_path(bulletin),
                                 class: %w[me-1 btn btn-primary]
-                        - if bulletin.may_to_moderate?
+                        - if policy(bulletin).to_moderate?
                             = link_to t('bulletins.index.send_to_moderation'),
                                 to_moderate_bulletin_path(bulletin),
                                 data: { turbo_method: :patch, turbo_confirm: t('bulletins.to_moderate.confirm') }, class: %w[me-1 btn btn-primary]
-                        - if bulletin.may_archive?
+                        - if policy(bulletin).archive?
                             = link_to t('bulletins.index.send_to_archive'),
                                 archive_bulletin_path(bulletin),
                                 data: { turbo_method: :patch, turbo_confirm: t('bulletins.archive.confirm') }, class: %w[btn btn-danger]
