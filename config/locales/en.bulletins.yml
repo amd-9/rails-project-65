@@ -17,7 +17,6 @@ en:
     show:
       created:  "Created by %{user} at %{created_at}"
       not_found: Bulletin does not exist or not accessable
-    insufficient_access_rights: Insufficient access rights!
     action_not_permitted: Action not permitted
   bulletins:
       index:

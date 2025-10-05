@@ -10,8 +10,4 @@ class UserPolicy
   def admin?
     user&.admin?
   end
-
-  def signed_in?
-    !user.nil?
-  end
 end
