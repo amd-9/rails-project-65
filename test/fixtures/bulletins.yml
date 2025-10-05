@@ -1,33 +1,22 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+draft_bulletin:
   title: Bulletion one
   description: Tasty potatoes are awesome
-  image: 
   user: one
   category: one
   state: draft
 
-two:
+under_moderation_bulletin:
   title: Bulletin two
   description: Oranges seems to be orange
-  image: 
   user: three
   category: two
   state: under_moderation
 
-three:
+published_bulletin:
   title: Bulletin three
   description: Tomatoes are red
-  image: 
   user: three
   category: two
   state: published
-
-fourth:
-  title: Bulletin four
-  description: Potatoes are tasty
-  image: 
-  user: three
-  category: two
-  state: draft

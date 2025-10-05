@@ -7,7 +7,7 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
     @admin = users(:admin)
     @user = users(:one)
 
-    @bulletin = bulletins(:two)
+    @bulletin = bulletins(:under_moderation_bulletin)
 
     sign_in(@admin)
   end

@@ -1,0 +1,14 @@
+draft_bulletin_image:
+  name: image
+  record: draft_bulletin (Bulletin)
+  blob: cookie_image_blob
+
+under_moderation_bulletin_image:
+  name: image
+  record: under_moderation_bulletin (Bulletin)
+  blob: cookie_image_blob
+
+published_bulletin_image:
+  name: image
+  record: published_bulletin (Bulletin)
+  blob: cookie_image_blob

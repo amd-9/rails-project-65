@@ -7,13 +7,8 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     @user = users(:one)
     @second_user = users(:two)
 
-    @bulletin = bulletins(:one)
-    @another_user_bulletin = bulletins(:fourth)
-    @published_bulletin = bulletins(:three)
-
-    @bulletin.image.attach(file_fixture('cookie_fixture.jpg'))
-    @another_user_bulletin.image.attach(file_fixture('cookie_fixture.jpg'))
-    @published_bulletin.image.attach(file_fixture('cookie_fixture.jpg'))
+    @bulletin = bulletins(:draft_bulletin)
+    @published_bulletin = bulletins(:published_bulletin)
 
     @category = categories(:one)
   end
