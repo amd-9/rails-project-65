@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class Web::Admin::CategoriesController < Web::Admin::ApplicationController
-  layout 'layouts/admin'
-
   def index
     @categories = Category.order(created_at: :desc)
   end
