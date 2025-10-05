@@ -16,9 +16,7 @@ class BulletinPolicy
   end
 
   def edit?
-    return true if @user.admin?
-
-    @bulletin.user == @user
+    update?
   end
 
   def update?
