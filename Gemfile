@@ -86,7 +86,10 @@ end
 group :production do
   gem 'aws-sdk-s3'
   gem 'opentelemetry-exporter-otlp'
+  gem 'opentelemetry-exporter-otlp-metrics'
   gem 'opentelemetry-instrumentation-all'
+  gem 'opentelemetry-metrics-api'
+  gem 'opentelemetry-metrics-sdk'
   gem 'opentelemetry-sdk'
   gem 'pg'
 end
