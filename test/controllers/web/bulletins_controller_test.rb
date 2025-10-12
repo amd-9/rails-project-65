@@ -53,7 +53,6 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     end
 
     created_bulletin = Bulletin.find_by(attrs.except(:image))
-    created_bulletin.image.filename
 
     assert created_bulletin
     assert created_bulletin.image.filename, upload_file_name
