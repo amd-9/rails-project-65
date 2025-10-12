@@ -39,8 +39,8 @@ en:
       new:
         title: Add new bulletin
       destroy:
-        confirm: Are you shure to destroy this bulletin?
-        success: Bulletin destroyed successfully
+        confirm: Are you shure to delete this bulletin?
+        success: Bulletin deleted successfully
       archive:
         confirm: Are you shure to archive this bulletin?
         success: Bulletin archived successfully

@@ -20,7 +20,7 @@ table.table
                         = link_to t('bulletins.index.show'), bulletin_path(bulletin), class: %w[me-1 btn btn-primary]
                         - if bulletin.may_archive?
                             = link_to t('bulletins.index.send_to_archive'),
-                                archive_admin_bulletin_path(bulletin), data: { turbo_method: :patch, turbo_confirm: t('bulletins.archive.confirm') }, class: %w[btn btn-danger]
+                                archive_admin_bulletin_path(bulletin), data: { turbo_method: :patch, turbo_confirm: t('bulletins.archive.confirm') }, class: %w[me-1 btn btn-danger]
                         = link_to t('bulletins.index.destroy'),
                             admin_bulletin_path(bulletin), data: { turbo_method: :delete, turbo_confirm: t('bulletins.destroy.confirm') }, class: %w[btn btn-danger]
 
