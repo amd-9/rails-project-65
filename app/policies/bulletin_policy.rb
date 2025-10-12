@@ -24,16 +24,4 @@ class BulletinPolicy
 
     @bulletin.user == @user && (@bulletin.draft? || @bulletin.rejected?)
   end
-
-  def archive?
-    return true if @user.admin?
-
-    @bulletin.user == @user && @bulletin.may_archive?
-  end
-
-  def to_moderate?
-    return true if @user.admin?
-
-    @bulletin.user == @user && @bulletin.may_to_moderate?
-  end
 end
