@@ -6,8 +6,9 @@ class Web::Admin::CategoriesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @admin = users(:admin)
     @user = users(:one)
-    @category = categories(:one)
-    @second_category = categories(:two)
+    @category = categories(:single_bulletin_category)
+    @multiple_bulletins_category = categories(:multiple_bulletins_category)
+    @empty_category = categories(:empty_category)
 
     sign_in(@admin)
   end
@@ -63,10 +64,18 @@ class Web::Admin::CategoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should not delete category with bulletins' do
-    delete admin_category_path(@second_category)
+    delete admin_category_path(@multiple_bulletins_category)
 
-    deleted_category = Category.find_by(id: @second_category.id)
+    deleted_category = Category.find_by(id: @multiple_bulletins_category.id)
 
     assert_not_nil deleted_category
+  end
+
+  test 'should delete emtpy category' do
+    assert_difference('Category.count', -1) do
+      delete admin_category_path(@empty_category)
+    end
+
+    assert_response :redirect
   end
 end

@@ -1,10 +1,10 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+single_bulletin_category:
   name: Category1
 
-two:
+multiple_bulletins_category:
   name: Category2
 
-three:
+empty_category:
   name: Category3

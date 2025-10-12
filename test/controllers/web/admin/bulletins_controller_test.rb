@@ -17,8 +17,16 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'should delete bulletin' do
+    assert_difference('Bulletin.count', -1) do
+      delete admin_bulletin_path(@bulletin)
+    end
+
+    assert_response :redirect
+  end
+
   test 'should get on_moderation' do
-    get admin_bulletins_url
+    get admin_root_url
     assert_response :success
   end
 

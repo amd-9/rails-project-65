@@ -28,6 +28,7 @@ en:
         actions: Actions
         show: Show
         edit: Edit
+        destroy: Delete
         send_to_moderation: To moderation
         send_to_archive: Archive
         publish: Publish
@@ -37,6 +38,9 @@ en:
         reset: Reset
       new:
         title: Add new bulletin
+      destroy:
+        confirm: Are you shure to destroy this bulletin?
+        success: Bulletin destroyed successfully
       archive:
         confirm: Are you shure to archive this bulletin?
         success: Bulletin archived successfully

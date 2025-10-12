@@ -35,7 +35,7 @@ Rails.application.routes.draw do
 
     namespace :admin do
       resources :categories, only: %i[index new edit update create destroy]
-      resources :bulletins,  only: %i[index] do
+      resources :bulletins,  only: %i[index destroy] do
         member do
           patch 'publish'
           patch 'archive'

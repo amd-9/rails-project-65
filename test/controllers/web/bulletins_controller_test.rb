@@ -10,7 +10,7 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
     @bulletin = bulletins(:draft_bulletin)
     @published_bulletin = bulletins(:published_bulletin)
 
-    @category = categories(:one)
+    @category = categories(:single_bulletin_category)
   end
 
   test 'should get index' do

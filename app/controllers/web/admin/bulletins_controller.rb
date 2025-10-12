@@ -10,6 +10,13 @@ class Web::Admin::BulletinsController < Web::Admin::ApplicationController
     @bulletins = @q.result.order(created_at: :desc).page(params[:page]).per(10)
   end
 
+  def destroy
+    bulletin = Bulletin.find(params[:id])
+
+    bulletin.destroy
+    redirect_back fallback_location: root_path, notice: t('bulletins.destroy.success')
+  end
+
   def publish
     bulletin = Bulletin.find(params[:id])
 

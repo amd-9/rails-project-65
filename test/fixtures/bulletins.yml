@@ -4,19 +4,19 @@ draft_bulletin:
   title: Bulletion one
   description: Tasty potatoes are awesome
   user: one
-  category: one
+  category: single_bulletin_category
   state: draft
 
 under_moderation_bulletin:
   title: Bulletin two
   description: Oranges seems to be orange
   user: three
-  category: two
+  category: multiple_bulletins_category
   state: under_moderation
 
 published_bulletin:
   title: Bulletin three
   description: Tomatoes are red
   user: three
-  category: two
+  category: multiple_bulletins_category
   state: published
