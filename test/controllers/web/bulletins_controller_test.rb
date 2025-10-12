@@ -121,7 +121,14 @@ class Web::BulletinsControllerTest < ActionDispatch::IntegrationTest
   test 'should archive bulletin' do
     sign_in(@user)
     patch archive_bulletin_path(@bulletin)
-    archived_bulletin = Bulletin.find(@bulletin.id)
-    assert archived_bulletin.archived?
+    @bulletin.reload
+    assert @bulletin.archived?
+  end
+
+  test 'should send bulletin to moderation' do
+    sign_in(@user)
+    patch to_moderate_bulletin_path(@bulletin)
+    @bulletin.reload
+    assert @bulletin.under_moderation?
   end
 end

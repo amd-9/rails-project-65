@@ -31,26 +31,23 @@ class Web::Admin::BulletinsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should publish bulletin' do
     patch publish_admin_bulletin_path(@bulletin)
+    @bulletin.reload
 
-    published_bulletin = Bulletin.find(@bulletin.id)
-
-    assert published_bulletin.state, :published
+    assert @bulletin.state, :published
     assert_response :redirect
   end
 
   test 'should reject bulletin' do
     patch archive_admin_bulletin_path(@bulletin)
+    @bulletin.reload
 
-    rejected_bulletin = Bulletin.find(@bulletin.id)
-
-    assert rejected_bulletin.state, :rejected
+    assert @bulletin.state, :rejected
   end
 
   test 'should archive bulletin' do
     patch reject_admin_bulletin_path(@bulletin)
+    @bulletin.reload
 
-    archived_bulletin = Bulletin.find(@bulletin.id)
-
-    assert archived_bulletin.state, :archived
+    assert @bulletin.state, :archived
   end
 end
