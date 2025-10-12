@@ -3,7 +3,7 @@
 class Web::AuthController < Web::ApplicationController
   def callback
     user_info = request.env['omniauth.auth']
-    user_name = user_info[:info][:name]
+    user_name = user_info[:info][:login]
     user_email = user_info[:info][:email]
 
     user = User.find_or_initialize_by(email: user_email)
