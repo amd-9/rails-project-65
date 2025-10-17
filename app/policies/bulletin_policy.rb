@@ -24,4 +24,8 @@ class BulletinPolicy
 
     @bulletin.user == @user && (@bulletin.draft? || @bulletin.rejected?)
   end
+
+  def author?
+    @bulletin.user == @user
+  end
 end
