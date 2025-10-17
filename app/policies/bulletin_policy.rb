@@ -9,8 +9,7 @@ class BulletinPolicy
   end
 
   def show?
-    return true if @bulletin.published?
-    return true if @user&.admin?
+    return true if @bulletin.published? || @user&.admin?
 
     @bulletin.user == @user
   end
