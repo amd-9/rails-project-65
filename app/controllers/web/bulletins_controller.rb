@@ -45,8 +45,9 @@ class Web::BulletinsController < Web::ApplicationController
 
   def archive
     bulletin = Bulletin.find(params[:id])
+    authorize bulletin
 
-    return redirect_back fallback_location: root_path, notice: t('bulletin.action_not_permitted') unless bulletin.may_archive? && (current_user.admin? || (authorize bulletin, :author?))
+    return redirect_back fallback_location: root_path, notice: t('bulletin.action_not_permitted') unless bulletin.may_archive?
 
     bulletin.archive!
     redirect_back fallback_location: root_path, notice: t('bulletins.archive.success')
@@ -54,8 +55,9 @@ class Web::BulletinsController < Web::ApplicationController
 
   def to_moderate
     bulletin = Bulletin.find(params[:id])
+    authorize bulletin
 
-    return redirect_back fallback_location: root_path, notice: t('bulletin.action_not_permitted') unless bulletin.may_to_moderate? && (current_user.admin? || (authorize bulletin, :author?))
+    return redirect_back fallback_location: root_path, notice: t('bulletin.action_not_permitted') unless bulletin.may_to_moderate?
 
     bulletin.to_moderate!
     redirect_back fallback_location: root_path, notice: t('bulletins.to_moderate.success')

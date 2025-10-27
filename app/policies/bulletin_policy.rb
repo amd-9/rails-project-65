@@ -27,4 +27,12 @@ class BulletinPolicy
   def author?
     @bulletin.user == @user
   end
+
+  def archive?
+    author? || @user.admin?
+  end
+
+  def to_moderate?
+    author? || @user.admin?
+  end
 end
